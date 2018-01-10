@@ -1,0 +1,15 @@
+---
+layout: page
+title: Setup Jekyll Theme blog
+excerpt: "Setup Jekyll Theme blog."
+image:
+  feature: tropsoilwetnessmap.png
+  credit: Tropical soil moisture (Thomas Gumbricht, Karttur AB)
+search_omit: true
+---
+
+<ul class="post-list">
+{% for post in site.categories.setup-blog %}
+  <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
+{% endfor %}
+</ul>

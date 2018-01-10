@@ -1,0 +1,24 @@
+---
+layout: page
+title: Setup Jekyll Theme Blog
+excerpt: "Set up a blog repository with a Jekyll theme, edit using Atom, and publish at GitHub.com"
+image:
+  feature: troplandformmap.png
+  credit: Plains, hills and lakes (Thomas Gumbricht, Karttur AB)
+search_omit: true
+---
+
+
+<h1>Blog<h1>
+<ul class="post-list">
+{% for post in site.categories.blog limit:5 %}
+  <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
+{% endfor %}
+</ul>
+
+<h1>Articles<h1>
+<ul class="post-list">
+{% for post in site.categories.setup-blog limit:5 %}
+  <li><article><a href="{{ site.url }}{{ page.url }}">{{ page.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
+{% endfor %}
+</ul>
