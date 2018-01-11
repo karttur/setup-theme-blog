@@ -4,6 +4,10 @@
   url: /about/
   include: 'N'
 
+- title: Front
+  url: /
+  include: 'N'
+
 - title: Karttur on GitHub
   url: /../../../overview/
   include: 'N'
