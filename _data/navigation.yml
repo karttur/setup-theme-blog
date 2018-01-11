@@ -8,12 +8,12 @@
   url: /../../../overview/
   include: 'N'
 
-- title: Blog
-  url: /blog/
-  include: 'N'
-
 - title: Articles
   url: /setup-blog/
+  include: 'N'
+
+- title: Blog
+  url: /blog/
   include: 'N'
 
 - title: Search
