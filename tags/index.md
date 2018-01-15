@@ -2,6 +2,8 @@
 layout: page
 title: Tag Index
 excerpt: "An archive of posts sorted by tag."
+image:
+  feature: std-trmm-fao-diff-vwb_vwb_trmm_2001-2016_A
 search_omit: true
 ---
 

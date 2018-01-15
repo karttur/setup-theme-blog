@@ -1,5 +1,9 @@
 ---
-layout: post
+layout: article
+previousarticle:
+  url: null
+nextarticle:
+  url: null
 title: Setup Jekyll theme blog
 excerpt: "Set up a blog repository with a Jekyll theme, edit using Atom, and publish at GitHub.com"
 modified: "2017-12-30 14:33"
@@ -10,9 +14,7 @@ tags:
   - So Simple Theme
   - GitHub
 image:
-  feature: troprunoffmap.png
-  credit: Tropical runoff (Thomas Gumbricht, Karttur AB)
-  #creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
+  feature: troprunoffmap
 date: "2017-12-30 14:33"
 comments: true
 share: true

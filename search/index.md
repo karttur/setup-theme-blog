@@ -5,8 +5,7 @@ date:
 modified:
 excerpt:
 image:
-  feature: troplandformmap.png
-  credit: Tropical plains, mountains and lakes (Thomas Gumbricht, Karttur AB)
+  feature: tropwetlandmap
 search_omit: true
 sitemap: false
 ---

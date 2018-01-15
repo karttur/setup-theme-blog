@@ -16,7 +16,8 @@
     {% if page.image.feature %}
       {% assign image = site.data.images[page.image.feature] %}
       <img src="{{ site.commonurl }}/images/{{ image.file }}" class="entry-feature-image" alt="{{ image.caption }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if image.caption %}<p class="image-credit">Map: {{ image.caption }}</p>{% endif %}
-    {% endif %}    <div class="entry-wrapper">
+    {% endif %}
+    <div class="entry-wrapper">
       <header class="entry-header">
         <ul class="entry-tags">
           {% for tag in page.tags %}<li><a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}">{{ tag }}</a></li>{% endfor %}
@@ -52,11 +53,11 @@
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
-      {% if page.previous %}
-        <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous</a>
+      {% if page.previousarticle.url %}
+        <a href="{{ site.url }}/{{ page.categories }}/{{ page.previousarticle.url }}/" class="btn" title="previous article">Previous</a>
       {% endif %}
-      {% if page.next %}
-        <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next</a>
+      {% if page.nextarticle.url %}
+        <a href="{{ site.url }}/{{ page.categories }}/{{ page.nextarticle.url }}/" class="btn" title="next article">Next</a>
       {% endif %}
     </nav><!-- /.pagination -->
   </article>
