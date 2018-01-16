@@ -2,8 +2,7 @@
 layout: page
 title: Blog
 excerpt: "An archive of blog posts sorted by date."
-image:
-  feature: mk-z-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
+image: mk-z-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
 search_omit: true
 ---
 

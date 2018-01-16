@@ -7,8 +7,7 @@ excerpt: Install ImageMagick and edit your images.
 tags:
   - ImageMagick
   - macOS
-image:
-  feature: avg-trmm-fao-diff-vwb_vwb_trmm_2001-2016_A
+image: avg-trmm-fao-diff-vwb_vwb_trmm_2001-2016_A
 date: '2018-01-13 16:39'
 comments: true
 share: true

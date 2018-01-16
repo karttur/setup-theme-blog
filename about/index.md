@@ -3,8 +3,7 @@ layout: page
 title: About the Geo Imagine Developer
 excerpt: "Geo Imagine Developer - script your own Earth"
 modified: 2017-12-24T19:44:38.564948-04:00
-image:
-  feature: tropwetlandmap
+image: tropwetlandmap
 ---
 
 Remote sensing and spatial data developer guide for global natural resources mapping, inventories and monitoring.

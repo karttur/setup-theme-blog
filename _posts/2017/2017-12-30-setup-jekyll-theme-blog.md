@@ -13,8 +13,7 @@ tags:
   - Jekyll
   - So Simple Theme
   - GitHub
-image:
-  feature: troprunoffmap
+image: troprunoffmap
 date: "2017-12-30 14:33"
 comments: true
 share: true

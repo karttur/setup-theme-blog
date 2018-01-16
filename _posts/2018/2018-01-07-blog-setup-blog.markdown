@@ -7,8 +7,7 @@ modified: 2018-01-07T14:17:25-04:00
 categories: blog
 excerpt: "Setting up a blog with Jekyll for GitHub using the text editor Atom"
 tags: [Jekyll, GitHub, Atom]
-image:
-  feature: avg-trmm-fao-deficit-vwb_vwb_trmm_2001-2016_A
+image: avg-trmm-fao-deficit-vwb_vwb_trmm_2001-2016_A
 comments: true
 share: true
 ---

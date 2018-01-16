@@ -4,8 +4,7 @@ title: "Search"
 date:
 modified:
 excerpt:
-image:
-  feature: tropwetlandmap
+image: tropwetlandmap
 search_omit: true
 sitemap: false
 ---

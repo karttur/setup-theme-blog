@@ -13,8 +13,8 @@
 
 <div id="main" role="main">
   <article class="hentry">
-    {% if page.image.feature %}
-      {% assign image = site.data.images[page.image.feature] %}
+    {% if page.image %}
+      {% assign image = site.data.images[page.image] %}
       <img src="{{ site.commonurl }}/images/{{ image.file }}" class="entry-feature-image" alt="{{ image.caption }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if image.caption %}<p class="image-credit">Map: {{ image.caption }}</p>{% endif %}
     {% endif %}    <div class="entry-wrapper">
       <header class="entry-header">
@@ -34,7 +34,7 @@
         {% if author.avatar contains 'http' %}
           <img src="{{ author.avatar }}" class="bio-photo" alt="{{ author.name }} bio photo"/>
         {% elsif author.avatar %}
-          <img src="{{ site.url }}/images/{{ author.avatar }}" class="bio-photo" alt="{{ author.name }} bio photo"/>
+          <img src="{{ site.commonurl }}/images/{{ author.avatar }}" class="bio-photo" alt="{{ author.name }} bio photo"/>
         {% endif %}
         <span class="author vcard">By <span class="fn">{{ author.name }}</span></span>
         <span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}"><i class="fa fa-calendar-o"></i> {{ page.date | date: "%B %d, %Y" }}</time></span>

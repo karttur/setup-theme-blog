@@ -10,8 +10,7 @@ tags:
   - hide/show element
   - CSS
   - javascript
-image:
-  feature: troprunoffmap
+image: troprunoffmap
 date: '2018-01-14 16:54'
 comments: true
 share: true

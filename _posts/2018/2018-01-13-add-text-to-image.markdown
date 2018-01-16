@@ -10,8 +10,7 @@ tags:
   - image label
   - image caption
   - time-series animation
-image:
-  feature: avg-trmm-fao-surplus-vwb_vwb_trmm_2001-2016_A
+image: avg-trmm-fao-surplus-vwb_vwb_trmm_2001-2016_A
 date: '2018-01-13 22:50'
 comments: true
 share: true

@@ -13,8 +13,8 @@
 
 <div id="main" role="main">
   <article class="entry">
-    {% if page.image.feature %}
-      {% assign image = site.data.images[page.image.feature] %}
+    {% if page.image %}
+      {% assign image = site.data.images[page.image] %}
       <img src="{{ site.commonurl }}/images/{{ image.file }}" class="entry-feature-image" alt="{{ image.caption }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if image.caption %}<p class="image-credit">Map: {{ image.caption }}</p>{% endif %}
     {% endif %}
     <div class="entry-wrapper">
