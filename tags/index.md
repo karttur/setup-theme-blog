@@ -2,7 +2,7 @@
 layout: page
 title: Tag Index
 excerpt: "An archive of posts sorted by tag."
-image: std-trmm-fao-diff-vwb_vwb_trmm_2001-2016_A
+image: ols-rmse-twi-percent_MCD43A4_java_2001-2016_A
 search_omit: true
 ---
 

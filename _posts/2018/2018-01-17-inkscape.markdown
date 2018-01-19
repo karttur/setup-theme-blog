@@ -1,0 +1,120 @@
+---
+layout: post
+title: Vector overlay
+previousurl: null
+nexturl: null
+excerpt: "InkScape installation and vector overlay in ImageMagick"
+modified: "2018-01-17 08:37"
+categories: blog
+tags:
+  - Inkscape
+  - ImageMagick
+  - vector overlay
+  - image manipulation
+  - macOS
+image: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
+date: "2018-01-17 08:37"
+comments: true
+share: true
+---
+**Contents**
+\- [introduction](#introduction)
+\- [Install Inkscape](#install-inkscape)
+\- [ImageMagick vector processing](#imagemagick-vector-processing)
+\- [Vector overlay](#vector-overlay)
+\- [Emboss watermark](#emboss-watermark)
+\- [Resources](#resources)
+
+## introduction
+
+This post assumes that you installed and got acquainted with ImageMagick, introduced in an [earlier post](../install-imagemagick/) and then further elaborated in [another post](../add-text-to-image/). I use InkScape and ImageMagick for creating vector overlays on image maps, like the global shoreline on the map image at the top of this page. How this is done is explained in this post.
+
+## Install Inkscape
+
+[Inkscape](https://inkscape.org) is an open source vector graphics editor available for all major operating systems. For macOS you can install Inksape either using Homebrew (introduced in [this post](../install-imagemagick/)) or use an installer that first installs [XQuartz](https://www.xquartz.org/) and then Inkscape. Both alternatives are outlined on the [Inkscape site](https://inkscape.org). Here I will only go through the Homebrew installation. To install InkScape using Homebrew, start a <span class='app'>Terminal</span> session and type at the command-line:
+
+<span class='terminal'>$ brew install caskformula/caskformula/inkscape</span>
+
+It will take quite some time for Homebrew to install (it took an hour for me). When the installation is ready, start inkscape from the <span class='app'>Terminal</span>
+
+<span class='terminal'>$ inkscape</span>
+
+If macOS does not find the command <span class='terminal'>$ inkscape</span> you need to give the full path to the InkScape app, but that depends on your installation. For my Homebrew installation it is:
+
+<span class='terminal'>$ /usr/local/bin/inkscape</span>
+
+But you should not have to worry about that if your InkScape installation completed without errors.
+
+## ImageMagick vector processing
+
+The vector files that I use for map layout are produced from a Geographical Information System (GIS), introduced in [another blog](https://karttur.github.io/setup-ide/setup-ide/install-gis/). If you do not have a vector file, go ahead and draw a vector in InkScape and save it as a .svg file.
+
+Assuming that you have a vector file (.svg) and want to just convert it to an image (rasterize in GIS jargon), the ImageMagick <span class='app'>Terminal</span> command is:
+
+<span class='terminal'>$ convert SrcVector.svg DstImage.png</span>
+
+If you want the image to have a specific size, you should be able to use the ImageMagick usual function _-resize_ (the example sets the image size using the width (_w_), height will be set proportionally):
+
+<span class='terminal'>$ convert -resize wx SrcVector.svg DstImage.png</span>
+
+If this did not work, add the ImageMagick function _-density_, and instead try:
+
+<span class='terminal'>$ convert -density 72 -resize wx SrcVector.svg DstImage.png</span>
+
+To force a non-proportional image, set both width (_w_) and height (_h_) followed by an exclamation mark ("!"):
+
+<span class='terminal'>$ convert -density 72 -resize wxh! SrcVector.svg DstImage.png</span>
+
+If you want to remove the white background from _DstImage_, set _-background_ to _none_:
+
+<span class='terminal'>$ convert -background none -density 72 -resize wx SrcVector.svg DstImage.png</span>
+
+You can also use InkScape for converting vector files to images, either from InkScape's graphical interface, or using the <span class='app'>Terminal</span>:
+
+<span class='terminal'>$ inkscape -z -e DstImage.png -w w -h h SrcVector.svg</span>
+
+### Vector overlay
+
+ImageMagick can be used for putting a vector on top of an image, that is how I to get the global shoreline on top of the rainfall map at the top of this page. The ImageMagic command for combining images, or vectors, is _-composite_.
+
+<span class='terminal'>$ convert -composite SrcImage.tif SrcVector.svg DstImage.png</span>
+
+On the command-line, the vector (overlay) must be entered **after** the image to end up on top in _DstImage_. In the command above the _SrcVector_ is neither transparent, nor is it fitted to the _SrcImage_, and the result is probably not what you wanted. You have to _-resize_ the vector to fit the _SrcImage_, and set the _SrcVector_ _-background_ to _none_.
+
+To get rid of the white background in the _SrcVector_, rearrange the command and add _-background_ _none_:
+
+<span class='terminal'>$ convert SrcImage.tif -background none SrcVector.svg -composite DstImage.png</span>
+
+To _-resize_ the vector to fit your image (as I want for my maps), find out the dimensions of your image:
+
+<span class='terminal'>$ magick identify SrcImge</span>
+
+Then set the dimensions for width and height using _-resize_, and force the vector to fit (by adding an exclamation mark). For ImageMagick to understand that the _-resize_ is for the _SrcVector_ you need to separate the vector processing by enclosing it using \\C and \\) (where the C should be the first parenthesis but I can not get it to show properly in html so I use a C - you must change "C" to "(" to make it work):
+
+<span class='terminal'>$ convert SrcImage.tif \\C -background none -resize wxh! SrcVector.svg \\) -composite DstImage.png</span>
+
+You can put the overlay vector anywhere in the _SrcImage_, resized to any size. For instance by combining _-resize_, _-geometry_ and _gravity_ as in [this post](../add-text-to-image/).
+
+### Emboss watermark
+
+The image map at the top of the page also has an embossed watermark. The command for only creating the watermark (as explained in an [earlier post](../add-text-to-image/)) is:
+
+<span class='terminal'>$ convert -size wxh xc:none -font Trebuchet -pointsize 300 -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\'  \" -transparent grey -fuzz 90% DstImage.ext</span>
+
+Nested into the command overlaying the vector to an existing image, the command becomes:
+
+<span class='terminal'>$ convert \\C -border 2x2 -bordercolor black SrcImage.ext \\) \\C -background none -resize wxh! SrcVector.svg \\) -composite  \\C -size wxh xc:none -font Trebuchet -pointsize point -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \\) -composite DstImage.ext</span>
+
+And then looping this command for all images in a folder, while saving the _DstImage_ with the same name as the _SrcImage_ but as a compressed jpg in a sub-folder (<span class='file'>pub-images</span>) (see [this post](../add-text-to-image/) for details on the command-line batch processing):
+
+<span class='terminal'>$ for i in \*.tif; do convert \\C -border 2x2 -bordercolor black SrcImage.ext \\) \\C -background none -resize wxh! SrcVector.svg \\) -composite  \\C -size wxh xc:none -font Trebuchet -pointsize point -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \\) -composite -quality 72 \"pub-images/${i%.\*}.jpg\"; done</span>
+
+## Resources
+
+[InkScape](https://inkscape.org)
+
+[ImageMagick](https://www.imagemagick.org)
+
+[ImageMagick reference](http://www.imagemagick.org/script/command-line-options.php)
+
+[ImageMagick examples](http://www.imagemagick.org/Usage/)

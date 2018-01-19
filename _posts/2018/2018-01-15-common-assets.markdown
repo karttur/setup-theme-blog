@@ -2,7 +2,10 @@
 layout: post
 title: Common assets across sites
 modified: "2018-01-15 22:33"
-categories: blog
+previousurl: null
+nexturl: null
+
+categories: "blog"
 excerpt: Creating common assets across sites with the So Simple Theme.
 tags:
   - Jekyll  
@@ -33,13 +36,11 @@ As I chose to publish what I do in several thematic blog sites, rather than a si
 
 When setting up a Jekyll site, the assets used by the site are typically assembled in a folder, usually calls <span class ='file'>assets</span>. Assets can either be hardcoded (explicitly stated), or created by Jekyll when serving up. In the latter case, Jekyll assembles the codes that are stored under the folder <span class='file'>\_sass</span> and incorporates them under <span class='file'>assets</span> in the published site (under the folder <span class='file'>\_site</span>). The theme I use for Karttur´s blog, So Simple, uses this approach.
 
-As I edited and expanded my resources, I got difficulties in keeping track of my <span class='file'>\_sass</span> contents for different sites within my GitHub pages, and I decided to build a repository with all assets and other resources that are common across my different sites (repositories). This also avoids having duplicate codes and images in my repositories.
-
 ## Images
 
 Most individual Karttur web-pages include a map at the top. I wanted to simplify the handling of images by creating a single repository for all images, including maps.
 
-All maps that are shown on Karttur´s GitHub pages are generated from Karttur´s Geo Imagine Framework. I thus added a small script that automatically saves all maps as images in a hierarchy of folders. I then assemble all maps covering the same region, and are at the same resolution in separate folder. All maps in the latter thus have the same dimension (the number of columns and rows are the same). This is not necessary to do, but that is how did it. This post is merely about how to asemble all images in a separate repository.
+All maps that are shown on Karttur´s GitHub pages are generated from Karttur´s Geo Imagine Framework. I thus added a small script that automatically saves all maps as images. I then assemble all maps covering the same region, and are at the same resolution in separate folders. All maps in the latter thus have the same dimension (the number of columns and rows are the same). This is not necessary to do, but that is how did it. This post is merely about how to assemble all images in a separate repository.
 
 ### A side note on image dimensions
 
@@ -95,6 +96,8 @@ avg-rntwi_RNTWI_java_2001-2016_AS:
 ```
 
 The example above shows the yml entry for the map shown at the top of this page.
+
+<span class='file'>images.yml</span> must be copied to the <span class='file'>\_data</span> folder of the repository. As the image library grows grows, so will <span class='file'>images.yml</span>. But because Jekyll produces static web-pages, there is no no need to update <span class='file'>images.yml</span> for existing repositors unless you add new pages with new images.
 
 ### Linking images.yml to the page
 
@@ -172,13 +175,13 @@ I thus moved the complete set of <span class='file'>assets</span> to the special
 
 <span class='terminal'>bundle exec jekyll serve</span>
 
-The pages in the site looks exaclty like before I created the "common" repository and reset all the links to javasctripts, CSS, fonts and images.
+The pages in the site looks exaclty like before I created the "common" repository and reset all the links to javascripts, CSS, fonts and images.
 
 ## Is it worth it?
 
 It took me some time to alter my pages to have common resources for images, javascript, css and fonts. But having done it, it is much easier to start a new blog theme in a separate GitHub repository. And I can change the style (CSS), behaviour (javascript) and fonts by just making changes in one place.
 
-The largest advantage for me, however, was to assemble all image maps in a single repository, and then just be able to include images by adding the a single line that then accesses both the image and the image meatadata via <span class='file'>images.yml</span>.
+The largest advantage for me, however, was to assemble all image maps in a single repository, and then just be able to include images by a single line in the page YAML and then access both the image and the image meatadata via <span class='file'>images.yml</span>.
 
 IMAGES.YML IN DATA
 

@@ -53,11 +53,11 @@
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
-      {% if page.previousarticle.url %}
-        <a href="{{ site.url }}/{{ page.categories }}/{{ page.previousarticle.url }}/" class="btn" title="previous article">Previous</a>
+      {% if page.previousurl %}
+        <a href="{{ site.url }}/{{ page.previousurl }}/" class="btn" title="previous">Previous</a>
       {% endif %}
-      {% if page.nextarticle.url %}
-        <a href="{{ site.url }}/{{ page.categories }}/{{ page.nextarticle.url }}/" class="btn" title="next article">Next</a>
+      {% if page.nexturl %}
+        <a href="{{ site.url }}/{{ page.nexturl }}/" class="btn" title="next">Next</a>
       {% endif %}
     </nav><!-- /.pagination -->
   </article>
