@@ -8,7 +8,7 @@ nexturl: null
 categories: "blog"
 excerpt: Creating common assets across sites with the So Simple Theme.
 tags:
-  - Jekyll  
+  - Jekyll
   - assets
   - images
   - So Simple Theme
@@ -30,7 +30,7 @@ share: true
 
 ## introduction
 
-As I chose to publish what I do in several thematic blog sites, rather than a single blog site with everything mixed, I needed to create a solution where I could use a common set of assets (javascript, css, fonts, images and other resources) across all sites. This post is about how I did it.
+As I chose to publish what I do in several thematic blog sites, rather than a single blog site with everything mixed, I created a solution where I could use a common set of assets (javascript, css, fonts, images and other resources) across all sites. This post is about how I did it.
 
 ## Jekyll assets
 

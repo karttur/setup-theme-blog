@@ -18,7 +18,7 @@ share: true
 ---
 
 **Contents**
-	\- [introduction](#introduction)
+	\- [Introduction](#introduction)
 	\- [Create a New repository](#create-a-new-repository)
 		\- [Select a theme](#select-a-theme)
 		\- [Read the theme blog](#read-the-theme-blog)
@@ -27,11 +27,11 @@ share: true
 		\- [Publish post](#publish-post)
 	\- [Resources](#resources)
 
-## introduction
+## Introduction
 
-Looking for a Jekyll template theme to use for writing my blogs, I started by looking at the Jekyll officially [supported themes](https://pages.github.com/themes/), but as I wanted a theme that could handle Tex/LaTex/MathML codes for math, I ended up searching [here](https://jekyllthemes.io) and [here](http://jekyllthemes.org). In the end I decided to use [So Simple theme](https://github.com/mmistakes/so-simple-theme) by Michael Rose.
+Looking for a Jekyll template theme to use for writing my blogs, I started by looking at the Jekyll officially [supported themes](https://pages.github.com/themes/), but as I wanted a theme that could handle Tex/LaTex/MathML codes for math, I ended up searching [here](https://jekyllthemes.io) and [here](http://jekyllthemes.org). In the end I decided to use the [So Simple theme](https://github.com/mmistakes/so-simple-theme) by Michael Rose.
 
-In this blog I describe how I set this blog up using a Jekyll theme. If you need to set up Jekyll and a text editor for working with your blogs, check [this blog](https://karttur.github.io/setup-blog/). If you want to understand a bit more about the code structure of Jekyll and markdown files, and publish a blog on GitHub, you could read [this blog](https://karttur.github.io/setup-github/).
+In this blog I describe how I set up Jekyll with the So Simple theme. If you need to set up Jekyll and a text editor for working with your blogs, check [this blog](https://karttur.github.io/setup-blog/). If you want to understand a bit more about the code structure of Jekyll and markdown files, and publish a blog on GitHub, you could read [this blog](https://karttur.github.io/setup-github/).
 
 ## Create a New repository
 
@@ -45,7 +45,7 @@ In the dialog window that opens, enter a <span class='textbox'>Name</span> and a
 
 Select a Jekyll theme you like, either from the list of officially [supported themes](https://pages.github.com/themes/), or from other web pages offering Jekyll themes, like [jekyllthemes.io](https://jekyllthemes.io) or [jekyllthemes.org](http://jekyllthemes.org). You can also search directly in GitHub.com. If you are looking for an easy solution, you could use the default Jekyll theme [minima], that I used for creating [my first blog](https://karttur.github.io/setup-blog/).
 
-When downloading your chosen theme, you will be directed to the GitHub repository for that theme. Click the <span class='button'>Clone or Download</span> button, and select either alternative, for this post I tried 'Download ZIP'. When the zip file is dowloaded, unzip, and then copy the complete content of the theme folder into the repository folder you just created with <span class='app'>GitHub desktop.app</span>. The <span class='file'>\_config.yml</span> file should be directly under your repository folder. You are copying/moving to the correct folder if your system asks if the <span class='file'>README.md</span> should be overwritten (whether or not to overwrite is your choice, you can anyway edit <span class='file'>README.md</span> later).
+When downloading your chosen theme, you will be directed to the GitHub repository for that theme. Click the <span class='button'>Clone or Download</span> button, and select either alternative. If you have a local clone of your GitHub.com account it is probably simpler to clone, GitHub.com will ask if you allow opening <span class='app'>GitHub desktop</span> and clone the theme. If you select 'Download ZIP', wait for the download to finish, unzip, and then copy the complete content of the theme folder into the repository folder you just created with <span class='app'>GitHub desktop.app</span>. The <span class='file'>\_config.yml</span> file should be directly under your repository folder. You are copying/moving to the correct folder if your system asks if the <span class='file'>README.md</span> should be overwritten (whether or not to overwrite is your choice, you can anyway edit <span class='file'>README.md</span> later).
 
 Now you should have a repository set up with a Jekyll theme of your choice. Open the <span class='app'>Terminal.app</span> (see this [blog post](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#opening-and-understanding-the-terminal) if you are not familiar with the <span class='app'>Terminal</span>). To change directory (cd) to your newly created repository, write <span class='terminal'>$ cd</span> at the prompt, followed by the local path to your repository. Instead of writing the path, you can just drag the path from a <span class='app'>Finder</span> window to the <span class='app'>Terminal</span> prompt, and it will be pasted automatically:
 
