@@ -25,9 +25,9 @@ share: true
 		\- [Javascript](#javascript)
 		\- [CSS](#css)
 		\- [Common assets and images](#common-assets-and-images)
-		\- [Front matter (\_config.yml and YAML)](#front-matter-configyml-and-yaml)
+		\- [Front matter (\_config.yml and YAML)](#front-matter)
 
-##Introduction
+## Introduction
 
 This post summarizes the the customizations done to the Jekyll So Simple theme for the Karttur GitHub sites based on So Simple.  
 
@@ -63,20 +63,21 @@ Many Jekyll template themes include a menu system, that when cloned or downloade
 
 The Karttur pages on GitHub.com are thematically separated in different repositories (blogs).
 To keep track of the different repositories I chose to give different names to the 'article' class of
-each repository. Thus the line "url: /'site-articles'/" varies for each repository, and the change must
-then be reflected in the file generating the 'articles', which for the Karttur solution translates to creating a new repository folder, with an adjusted <span class='file>index.md</span> file </span class='file>'site-articles'/index.md</span>.
+each repository. Thus the line "url: /'site-articles'/" above, varies for each repository. This change must
+then be reflected in the file generating the 'articles', which for the Karttur solution translates to creating a new repository folder, with an adjusted <span class='file'>index.md</span> file </span class='file'>'site-articles'/index.md</span>.
 
 ### 'site-articles' index.md
 
-As Karttur's blogs cover different thematic areas, for any new theme I rename  the general 'article' folder to a name reflecting the theme, and edit the <span class='file>index.md</span> file in that renamed folder. As an example, in the 'overview' blog, 'article' is replace with 'overview',
-and then </span class='file>'overview/index.md</span> is edited to look for posts with the YAML parameter _categories_ set to 'overview':
+As Karttur's blogs cover different thematic areas, for any new theme I rename the general 'article' folder to a name reflecting the theme, and edit the <span class='file'>index.md</span> file in that renamed folder. As an example, in the 'overview' blog, 'article' is renamed to 'overview', and then </span class='file'>'overview/index.md</span> is edited to look for posts with the YAML parameter _categories_ set to 'overview':
 
 ```
+{% raw %}
 <ul class="post-list">
 {% for post in site.categories.overview %}
   <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
 {% endfor %}
 </ul>
+{% endraw %}
 ```
 Consequently the YAML for posts that belong to the 'article' class must be edited to state 'overview' for the parameter _categories_ .
 
@@ -90,8 +91,8 @@ ___
 
 ### layout (navigation links)
 
-The overall page structure of a Jekyll theme is defined by a layout, usually under the <span class='file>\_layout</span> folder. The So Simple theme contains two layouts, <span class='file>\_layout/page.html</span> and <span class='file>\_layout/post.html</span>.
-The style for the layouts are the same, but with the _page_ layout omitting some features compared to _post_. For the Karttur site I wanted to have an intermediate layout between _page_ and _post_, and created (<span class='file>\_layout/article.html</span>). The only difference between the classes _post_ and _article_ is in the navigation linkage to 'previous' and 'next' towards the
+The overall page structure of a Jekyll theme is defined by a layout, usually under the <span class='file'>\_layout</span> folder. The So Simple theme contains two layouts, <span class='file'>\_layout/page.html</span> and <span class='file'>\_layout/post.html</span>.
+The style for the layouts are the same, but with the _page_ layout omitting some features compared to _post_. For the Karttur site I wanted to have an intermediate layout between _page_ and _post_, and created (<span class='file'>\_layout/article.html</span>). The only difference between the classes _post_ and _article_ is in the navigation linkage to 'previous' and 'next' towards the
 bottom, where the _article_ class looks like this:
 
 ```
@@ -109,6 +110,7 @@ bottom, where the _article_ class looks like this:
 
 And then I also edited the _post_ class previous' and 'next' navigation:
 ```
+{‰ raw ‰}
     <nav class="pagination" role="navigation">
       {% if page.previousurl %}
         <a href="{{ site.url }}/{{ page.categories }}/{{ page.previousurl }}/" class="btn" title="previous">Previous</a>
@@ -122,10 +124,10 @@ And then I also edited the _post_ class previous' and 'next' navigation:
         <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next</a>
       {% endif %}
     </nav><!-- /.pagination -->
+{% endraw %}  
 ```
 
-Compared to the orignal So Simple theme definitions, this gives the option to fully control the navigation links to 'previous' and 'next' for both the layout _posts_ and _articles_,
-but also required two new YAML parameters: _previousurl_ and _nexturl_:
+Compared to the original So Simple theme definitions, this gives the option to fully control the navigation links to 'previous' and 'next' for both the layout _posts_ and _articles_, but also requires two new YAML parameters: _previousurl_ and _nexturl_:
 
 ```
 ___
@@ -140,7 +142,7 @@ If set to 'null' these parameters are ignored, and the layout is the same as for
 
 ### Includes (footer)
 
-The <span class='file>\_includes/footer.html</span> for Karttur's pages is extended compared to the original So Simple theme and contains the site title and description, and a link to [researchgate](https://researchgate.net) as a social site.
+The <span class='file'>\_includes/footer.html</span> for Karttur's pages is extended compared to the original So Simple theme and contains the site title and description, and a link to [researchgate](https://researchgate.net) as a social site.
 
 ```
 {% raw %}
@@ -179,7 +181,7 @@ I customized the heading font size for \<h1\> and \<h\2>, by reducing them.
 
 I then added CSS for the \<span\> tags that are used throughout the Karttur site to fasciliate the explanations regarding which apps, structures and commands etc that the text refers to.
 
-<button id= "toggle-codelbtn" onclick="hiddencode('toggle-css')">Hide/Show CSS </button>
+<button id= "toggle-cssbtn" onclick="hiddencode('toggle-css')">Hide/Show CSS </button>
 
 <div id="toggle-css" style="display:none">
 
@@ -266,7 +268,7 @@ I then added CSS for the \<span\> tags that are used throughout the Karttur site
 
 ### Common assets and images
 
-As I chose to publish what I do in several thematic blog sites (repositories) I created a solution where I could use a common set of assets (javascript, css, fonts and other resources) across all sites. As almost every Karttur page contains a map (image) at the top, I also changed the YAML for images, created a separate .yml file for images <span class='file>\_data/images.yml</span>,
+As I chose to publish what I do in several thematic blog sites (repositories) I created a solution where I could use a common set of assets (javascript, css, fonts and other resources) across all sites. As almost every Karttur page contains a map (image) at the top, I also changed the YAML for images, created a separate .yml file for images <span class='file'>\_data/images.yml</span>,
 and assembled all images to the url site that also contains the other common resources. The changes needed to create a separate common resource site is outlined in [another post](../../setup-blog/common-assets/).
 
 ### Front matter (\_config.yml and YAML)
