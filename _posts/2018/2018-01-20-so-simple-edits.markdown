@@ -3,7 +3,7 @@ layout: post
 title: Jekyll theme customization
 previousurl: null
 nexturl: null
-excerpt: Costumizing a Jekyll theme
+excerpt: Customizing a Jekyll theme
 modified: '2018-01-20 13:33'
 categories: blog
 tags:
@@ -25,8 +25,8 @@ share: true
 		\- [Javascript](#javascript)
 		\- [CSS](#css)
 		\- [Common assets and images](#common-assets-and-images)
-		\- [Front matter (\_config.yml and YAML)](#front-matter)
-
+		\- [Front matter](#common-assets-and-images)
+<script src="https://karttur.github.io/common/assets/js/karttur/togglediv.js"></script>
 ## Introduction
 
 This post summarizes the the customizations done to the Jekyll So Simple theme for the Karttur GitHub sites based on So Simple.  
@@ -38,37 +38,31 @@ Many Jekyll template themes include a menu system, that when cloned or downloade
 ```
 - title: About
   url: /about/
-  include: 'N'
 
 - title: Front
   url: /
-  include: 'N'
 
 - title: Karttur on GitHub
   url: https:karttur.github.io/overview/
-  include: 'N'
 
 - title: Articles
   url: /'site-articles'/
-  include: 'N'
 
 - title: Blog
   url: /blog/
-  include: 'N'
 
 - title: Search
   url: /search/
-  include: 'N'
 ```
 
 The Karttur pages on GitHub.com are thematically separated in different repositories (blogs).
 To keep track of the different repositories I chose to give different names to the 'article' class of
 each repository. Thus the line "url: /'site-articles'/" above, varies for each repository. This change must
-then be reflected in the file generating the 'articles', which for the Karttur solution translates to creating a new repository folder, with an adjusted <span class='file'>index.md</span> file </span class='file'>'site-articles'/index.md</span>.
+then be reflected in the file generating the 'articles', which for the Karttur solution translates to creating a new repository folder, with an adjusted <span class='file'>index.md</span> file <span class='file'>'site-articles'/index.md</span>.
 
 ### 'site-articles' index.md
 
-As Karttur's blogs cover different thematic areas, for any new theme I rename the general 'article' folder to a name reflecting the theme, and edit the <span class='file'>index.md</span> file in that renamed folder. As an example, in the 'overview' blog, 'article' is renamed to 'overview', and then </span class='file'>'overview/index.md</span> is edited to look for posts with the YAML parameter _categories_ set to 'overview':
+As Karttur's blogs cover different thematic areas, for any new theme I rename the general 'article' folder to a name reflecting the theme, and edit the <span class='file'>index.md</span> file in that renamed folder. As an example, in the 'overview' blog, 'article' is renamed to 'overview', and then <span class='file'>'overview/index.md</span> is edited to look for posts with the YAML parameter _categories_ set to 'overview':
 
 ```
 {% raw %}
@@ -108,9 +102,10 @@ bottom, where the _article_ class looks like this:
 {% endraw %}
 ```
 
-And then I also edited the _post_ class previous' and 'next' navigation:
+And then I also edited the _post_ class 'previous' and 'next' navigation:
+
 ```
-{‰ raw ‰}
+{% raw %}
     <nav class="pagination" role="navigation">
       {% if page.previousurl %}
         <a href="{{ site.url }}/{{ page.categories }}/{{ page.previousurl }}/" class="btn" title="previous">Previous</a>
@@ -124,7 +119,7 @@ And then I also edited the _post_ class previous' and 'next' navigation:
         <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next</a>
       {% endif %}
     </nav><!-- /.pagination -->
-{% endraw %}  
+{% endraw %}
 ```
 
 Compared to the original So Simple theme definitions, this gives the option to fully control the navigation links to 'previous' and 'next' for both the layout _posts_ and _articles_, but also requires two new YAML parameters: _previousurl_ and _nexturl_:
@@ -146,6 +141,7 @@ The <span class='file'>\_includes/footer.html</span> for Karttur's pages is exte
 
 ```
 {% raw %}
+#footer.html
 {% if site.owner.google.ad-client and site.owner.google.ad-slot %}{% include ad-footer.html %}{% endif %}
 <div class="wrap">
 	<h1 class='foot-title'>{{ site.title | escape }}</h1>
@@ -173,7 +169,7 @@ The <span class='file'>\_includes/footer.html</span> for Karttur's pages is exte
 
 ### Javascript
 
-To include large chunks of code in the posts, but hiding it as default and only showing it on request, I added a javascript function described in a [separate post](../../setup-blog/blog-hide-show-div/). The use of the hide/show function is illustrated in the next section on CSS.
+To include large chunks of code in the posts, but hiding it as default and only showing it on request, I added a javascript function described in a [separate post](../blog-hide-show-div/). The use of the hide/show function is illustrated in the next section on CSS.
 
 ### CSS
 
@@ -181,7 +177,7 @@ I customized the heading font size for \<h1\> and \<h\2>, by reducing them.
 
 I then added CSS for the \<span\> tags that are used throughout the Karttur site to fasciliate the explanations regarding which apps, structures and commands etc that the text refers to.
 
-<button id= "toggle-cssbtn" onclick="hiddencode('toggle-css')">Hide/Show CSS </button>
+<button id= "toggle-cssbtn" onclick="hiddencode('toggle-css')">Hide/Show CSS</button>
 
 <div id="toggle-css" style="display:none">
 
@@ -259,7 +255,6 @@ I then added CSS for the \<span\> tags that are used throughout the Karttur site
       font-family: $py-font;
 
     }
-
 {% endraw %}
 {% endcapture %}
 
@@ -269,25 +264,25 @@ I then added CSS for the \<span\> tags that are used throughout the Karttur site
 ### Common assets and images
 
 As I chose to publish what I do in several thematic blog sites (repositories) I created a solution where I could use a common set of assets (javascript, css, fonts and other resources) across all sites. As almost every Karttur page contains a map (image) at the top, I also changed the YAML for images, created a separate .yml file for images <span class='file'>\_data/images.yml</span>,
-and assembled all images to the url site that also contains the other common resources. The changes needed to create a separate common resource site is outlined in [another post](../../setup-blog/common-assets/).
+and assembled all images to the url site that also contains the other common resources. The changes needed to create a separate common resource site is outlined in [another post](../common-assets/).
 
 ### Front matter (\_config.yml and YAML)
 
 The changes above affect the site <span class='file'>\_config.yml</span> and the YAML front matter of all posts. In <span class='file'>\_config.yml</span> the url to the common resources url holding javascript, css, fonts and images must be added.
-´´´
+```
 commonurl: https://karttur.github.io/common
-´´´
+```
 
-The YAML front matter of posts (whether of class post, page or article) also changes compared to the original So Simple theme YAML. The YAML for this page looks like this:
+The YAML front matter of posts (whether of class post, page or article) also changes compared to the original So Simple theme YAML. The YAML for this page, for example, looks like this:
 
 ```
 ---
 layout: post
 title: Jekyll theme customization
 previousurl: null
-nexturl null
-excerpt: "Costumizing a Jekyll theme"
-modified: "2018-01-14 14:33"
+nexturl: null
+excerpt: Customizing a Jekyll theme
+modified: '2018-01-20 13:33'
 categories: blog
 tags:
   - Jekyll theme customization
@@ -295,7 +290,7 @@ tags:
   - YAML edit
   - assets
 image: ts-upsl-rntwi_RNTWI_id_2001-2016_AS
-date: "2018-01-14 13:23"
+date: '2018-01-20 14:05'
 comments: true
 share: true
 ---
