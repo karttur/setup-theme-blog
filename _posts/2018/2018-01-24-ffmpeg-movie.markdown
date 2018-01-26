@@ -17,7 +17,7 @@ date: '2018-01-24 01:04'
 comments: true
 share: true
 figure1: avg-twi-percent_MCD43A4_bw_2001-2016_A
-figure2: twi-percent_MCD43A4_oka-makgadik_201012_v005-twi01-MS
+figure2: twi-percent_MCD43A4_oka-makgadik_201012_text
 figure3: imageclock_oka-makgadik_201012
 movie1: twi-percent_MCD43A4_oka-makgadik_2001-2016_v005-twi01-MS
 ---
@@ -68,12 +68,14 @@ where YYYY and MM indicate the year and month represented in the image. The imag
 
 <span class='terminal'>$ convert \\C -resize 716x -border 2x2 -bordercolor black SrcImage.tif \\) \\C -size 716x150 xc:none -font Trebuchet -pointsize 150 -gravity center -draw \"fill silver text 1,1 \'KARTTUR\'  fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \) -composite -quality 72 DstImage.jpg</span>
 
-The image width then becomes 720 pixels (716 + 2*border), which corresponds to the width of the main column in the Jekyll theme So Simple that I use for writing this blog.
+The image width then becomes 720 pixels (716 + 2*border), which is the width of old analogue television sets. I will use that dimensions for creating an animation in this post.
 
 <figure>
 <img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure1].file }}">
 <figcaption> {{ site.data.images[page.figure1].caption }} </figcaption>
 </figure>
+
+I do, however, want to create an animation only of the Okavango swamps and the Makdagikgadi pans in northern Botswana. I must thus first _-resize_ and _-crop_ my image sequence to fit the movie dimesnions I chose.
 
 ### Resize and crop images in time series
 
@@ -101,8 +103,8 @@ caption:\"Linyanti\" -geometry +240+64 -composite
 The ImageClock is created from a Python package that I wrote, and is part of Karttur's Geo Imagine Framework. It is not publicly available. The trick is that it produces image clocks with files named exactly corresponding the image maps, but in a separate folder. Below is the <span class='package'>ImageClock</span> png file for the image frame above (black is set to transparent in the overlay, but shown in the image below).
 
 <figure>
-<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure3].file }}">
-<figcaption> {{ site.data.images[page.figure3].caption }} </figcaption>
+ <img  title="{{ site.data.images[page.figure3].credit }}" src="{{ site.commonurl }}/images/{{ site.data.images[page.figure3].file }}">
+<figcaption> <a href="{{ site.commonurl }}/images/{{ site.data.images[page.figure3].source }}">{{ site.data.images[page.figure3].caption }}</a> </figcaption>
 </figure>
 
 ## Overlay clock on map

@@ -4,11 +4,10 @@ title: Introduction to this blog
 date: "2018-01-07 10:06"
 previousurl: null
 nexturl: blog/setup-jekyll-theme-blog
-
 modified: 2018-01-07T14:17:25-04:00
 categories: setup-blog
 excerpt: "Setting up a blog with Jekyll for GitHub using the text editor Atom"
-tags: [Jekyll, GitHub, Atom]
+tags: [Jekyll, GitHub, Atom, Markdown]
 image: ts-mdsl-rntwi_RNTWI_java_2001-2016_AS
 comments: true
 share: true

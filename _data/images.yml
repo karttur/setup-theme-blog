@@ -1,21 +1,108 @@
+avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-nosvg:
+    file: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-nosvg.jpg
+    author: Thomas Gumbricht
+    caption: Shoreline vector map (orignal in .svg format) used for overlay
+    credit: null
+    source: twi-percent_MCD43A4_oka-makgadik_201511_medium.jpg
+
+avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-svg:
+    file: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-svg.jpg
+    author: Thomas Gumbricht
+    caption: Shoreline vector map (orignal in .svg format) used for overlay
+    credit: null
+    source: twi-percent_MCD43A4_oka-makgadik_201511_medium.jpg
+
+avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_medium:
+    file: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_medium.jpg
+    author: Thomas Gumbricht
+    caption: Shoreline vector map (orignal in .svg format) used for overlay
+    credit: null
+    source: twi-percent_MCD43A4_oka-makgadik_201511_medium.jpg
+
+TRMM_countries:
+    file: TRMM_countries.png
+    author: Thomas Gumbricht
+    caption: Shoreline vector map (orignal in .svg format) used for overlay
+    credit: null
+    source: twi-percent_MCD43A4_oka-makgadik_201511_medium.jpg
+twi-percent_MCD43A4_oka-makgadik_201005_small:
+    file: twi-percent_MCD43A4_oka-makgadik_201005_small.jpg
+    author: Thomas Gumbricht
+    caption: Average rain normalized soil moisture 2001-2016, Indonesia
+    credit: null
+    source: twi-percent_MCD43A4_oka-makgadik_201005_medium.jpg
+twi-percent_MCD43A4_oka-makgadik_201511_small:
+    file: twi-percent_MCD43A4_oka-makgadik_201511_small.jpg
+    author: Thomas Gumbricht
+    caption: Average rain normalized soil moisture 2001-2016, Indonesia
+    credit: null
+    source: twi-percent_MCD43A4_oka-makgadik_201511_medium.jpg
+avg-rntwi_RNTWI_id_2001-2016_large:
+    file: avg-rntwi_RNTWI_id_2001-2016_large.jpg
+    author: Thomas Gumbricht
+    caption: Average rain normalized soil moisture 2001-2016, Indonesia
+    credit: null
+    source: null
+avg-rntwi_RNTWI_id_2001-2016_medium:
+    file: avg-rntwi_RNTWI_id_2001-2016_medium.jpg
+    author: Thomas Gumbricht
+    caption: Average rain normalized soil moisture 2001-2016, Indonesia
+    credit: null
+    source: null
+avg-rntwi_RNTWI_java_2001-2016_medium:
+    file: avg-rntwi_RNTWI_java_2001-2016_medium.jpg
+    author: Thomas Gumbricht
+    caption: Average rain normalized soil moisture 2001-2016, Java, Indonesia
+    credit: null
+    source: null
+clockimage_201506:
+    file: clockimage_201506.png
+    author: Thomas Gumbricht
+    caption: Timeline/clock image used as overlay in animations
+    credit: null
+    source: null
+avg-rntwi_RNTWI_oka_2001-2016_small-72dpi:
+    file: avg-rntwi_RNTWI_oka_2001-2016_small-72dpi.jpg
+    author: Thomas Gumbricht
+    caption: Average rain normalized soil moisture 2001-2016, Okavango, Botswana
+    credit: null
+    source: null
+avg-rntwi_RNTWI_oka_2001-2016_small-300dpi:
+    file: avg-rntwi_RNTWI_oka_2001-2016_small-300dpi.jpg
+    author: Thomas Gumbricht
+    caption: Average rain normalized soil moisture 2001-2016, Okavango, Botswana
+    credit: null
+    source: null
+ts-losl-rntwi_RNTWI_oka_2001-2016_small:
+    file: ts-losl-rntwi_RNTWI_oka_2001-2016_small.jpg
+    author: Thomas Gumbricht
+    caption: Theil-Sen lower confidence boundary (95%) for estimated change in rain normalised soil moisture 2001-2016, Okavango, Botswana
+    credit: null
+    source: null
+ts-upsl-rntwi_RNTWI_oka_2001-2016_small:
+    file: ts-upsl-rntwi_RNTWI_oka_2001-2016_small.jpg
+    author: Thomas Gumbricht
+    caption: Theil-Sen upper confidence boundary (95%) for estimated change in rain normalised soil moisture 2001-2016, Okavango, Botswana
+    credit: null
+    source: null
 imageclock_oka-makgadik_201012:
     file: imageclock_oka-makgadik_201012.jpg
     author: Thomas Gumbricht
     caption: Image time line and annual clock (dec 2010)
-    credit: null
-    source: null
+    credit: Created by Karttur's Python package ImageClock
+    source: imageclock_oka-makgadik_201012.jpg
 avg-twi-percent_MCD43A4_bw_2001-2016_A:
     file: avg-twi-percent_MCD43A4_bw_2001-2016_A.jpg
     author: Thomas Gumbricht
     caption: Average soil moisture 2001-2016, Botswana
     credit: null
     source: null
-twi-percent_MCD43A4_oka-makgadik_201012_v005-twi01-MS:
-    file: twi-percent_MCD43A4_oka-makgadik_201012_v005-twi01-MS.jpg
+twi-percent_MCD43A4_oka-makgadik_201012_text:
+    file: twi-percent_MCD43A4_oka-makgadik_201012_text.jpg
     author: Thomas Gumbricht
     caption: Soil moisture dec 2010, Okavango-Makgadikgadi, Botswana
-    credit: null
-    source: null
+    credit: Created by Thomas Gumbricht using Karttur's Geo Imagine Framework
+    source: twi-percent_MCD43A4_oka-makgadik_201012_text.jpg
 ts-mdsl-rntwi_RNTWI_id_2001-2016_AS:
     file: ts-mdsl-rntwi_RNTWI_id_2001-2016_AS.jpg
     author: Thomas Gumbricht

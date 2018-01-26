@@ -15,6 +15,9 @@ tags:
   - time-series animation
   - emboss watermark
 image: ts-mdsl-rntwi_RNTWI_java_2001-2016_AS
+figure1A: avg-rntwi_RNTWI_oka_2001-2016_small-72dpi
+figure2A: avg-rntwi_RNTWI_oka_2001-2016_small-300dpi
+figure2: clockimage_201506
 date: '2018-01-13 22:50'
 comments: true
 share: true
@@ -37,6 +40,10 @@ share: true
 
 This post is about putting a caption, label, watermark or other text directly in an image for web publishing. I also wanted to create animations from time-series of maps, and put both a caption, a time line and a clock in the image. This can not be done manually, and I chose to use ImageMagick. This post only covers how to use [ImageImagick](https://www.imagemagick.org) for putting text in images, and to create image compositions. The [previous post is an  introduction to ImageMagick](../2018/2018-01-13-install-imagemagick.html).
 
+## Images canvas and layer(s)
+
+If ImageMagick does not put the text as you expected (or not text at all), the chance is that your layer is not filling up the canvas. A canvas can contain more than one layer, and the positions you are setting the text at might be in the canvas but outside the layer. If this happens, try to use the option _+repage_, and ImageMagick adjusts the canvas to fit the layer.
+
 ## Options for setting text
 
 The ImageMagick functions _-annotate_, _-draw_, _-caption_ and _-label_  can all be used for writing text to images. Which function to use depends on how much and what type of control you want to have over the text that is written. The general options for setting fonts, colors and postions are similar. The blog uses _-annotate_ as the vehicle for explaining how to put text in images, and then I describe how I used _-draw_ to put the embossed watermark text on the maps at the top of each page, and  _-caption_ label _-label_ for setting text in pre-defined geometries.
@@ -47,9 +54,11 @@ The basic command-line syntax to _-annotate_ an image using ImageMagick is:
 
 <span class='terminal'>$ convert -annotate +startx+starty \"annotation\" SrcImage.ext DstImage.ext</span>
 
+![My Map]({{ site.commonurl }}/images/avg-twi-percent_MCD43A4_bw_2001-2016_xs.jpg){: .pull-left}
+<br>
 where _startx_ is the image column where the text should start, _starty_ is the row where to start, and the quoted text that follows (_annotation_) is the text to write; _SrcImage_ and _DstImage_ are the source and destination images, with _ext_ denoting the image file type. If you want to write "My map" in the upper left corner (20 pixels from the left and 30 pixels from the top) on a png file, this then becomes:
 
- <span class='terminal'>$ convert -annotate +20+30 "My map" SrcImage.png DstImage.png</span>
+ <span class='terminal'>$ convert -annotate +20+30 \"My map\" SrcImage.png DstImage.png</span>
 
 ### Font size and dpi
 
@@ -77,9 +86,15 @@ where _dpi_ is the dpi you want the _DstImage_ to have. Do not change _PixelsPer
 
 If you try the same font size (expressed as _-pointsize_) on two copies of the same image, one at 72 dpi and the other at 300, you will get differently sized text on the two images.
 
- <span class='terminal'>$ convert -pointsize 30 -annotate +20+30 \"My map\" SrcImage@72dpi.ext DstImage@72dpi.ext</span>
+ <span class='terminal'>$ convert -pointsize 24 -annotate +50+200 \"Okavango\" SrcImage@72dpi.ext DstImage@72dpi.ext</span>
 
-<span class='terminal'>$ convert -pointsize 30 -annotate +20+30 \"My map\" SrcImage@300dpi.ext DstImage@300dpi.ext</span>
+<span class='terminal'>$ convert -pointsize 24 -annotate +50+200 \"Okavango\" SrcImage@300dpi.ext DstImage@300dpi.ext</span>
+
+<figure class="half">
+	<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure1A].file }}" alt="image">
+	<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure2A].file }}" alt="image">
+	<figcaption>The same image at 72 and 300 dpi, with pointsize set to 48 in both. The maps show the average rain normalized soil moisture 2001-2016 for the Okavango Swamps, Botswana.</figcaption>
+</figure>
 
 ### Position anchor (_-gravity_)
 
@@ -91,7 +106,7 @@ The offset distance is always positive towards the image center.
 
 ### Font color
 
-To change the font color when using _-annotate_ add the parameter _-fill_ and the [HEX-code](../2018/2018-01-13-install-imagemagick.html#set-border) or standard html name for the color you want the text to have:
+To change the font color when using _-annotate_ add the parameter _-fill_ and either the quoted [HEX-code](../2018/2018-01-13-install-imagemagick.html#set-border), color defined as quoted RGB\[A\]  ("RGB\[A\]\(0,0,255\[,0.5\]\)", or standard html name for the color you want the text to have:
 
 <span class='terminal'>$ convert -pointsize 30 -fill \"#339966\" -annotate +20+30 \"My map\" SrcImage.ext  DstImage.ext</span>
 
@@ -103,7 +118,17 @@ To set the font of any text to _-annotate_, there are several [optional] paramet
 
 You have to set the _-font_, _-family_ is a backup. _-stretch_, _-style_ and _-weight_ only works for some fonts. To check out the internal ImageMagick fonts and how they can be set use the magick _-list_ command:
 
+![My Map]({{ site.commonurl }}/images/avg-rntwi_RNTWI_oka_2001-2016_xs-oka.jpg)
+{: .pull-right}
+
+<br>
 <span class='terminal'>$ magick -list font</span>
+
+The following ImageMagick command includes two _-annotate_ options, each with a different _-font_. The first text is rotated 45 degrees. The _DstImage_ is a compressed jpg image, shown to the right.
+
+<br>
+<span class='terminal'>$ convert SrcImage.png -pointsize 14 -font ArialNarrowI -fill blue -annotate  45x70+38+10 \'Panhandle\'  -pointsize 44 -font Trebuchet -fill \'RGBA(0,0,255,0.5)\' -annotate +25+100  \'Okavango\' -quality 72  DstImage.jpg</span>
+
 
 ## Draw
 
@@ -111,27 +136,33 @@ The ImageMagick function _-draw_ is not only for text, but can also be used for 
 
 You can use draw to create an image just containing text:
 
-<span class='terminal'>convert -size 1800x300 -background none -pointsize 54 -font Trebuchet -fill silver -gravity center caption:\"KARTTUR\"  DstImage.png
+<span class='terminal'>$ convert -size 240x180 -background white -pointsize 40 -font Trebuchet -fill silver -gravity center caption:\"KARTTUR\"  DstImage.png
 </span>
 
-To make a bit more fancy (and increase the font size), add a shade:
+![Image with text]({{ site.commonurl }}/images/karttur-textonly_extrasmall.jpg)
+{: .pull-right}
 
-<span class='terminal'>convert -size 1800x300 -background none -pointsize 100 -font Trebuchet -fill silver -gravity center caption:\"KARTTUR\"  -shade 240x40 DstImage.png
+To make a bit more fancy, add a shade (and save as compressed jpg):
+
+<span class='terminal'>$ convert -size 240x180 -background white -pointsize 40 -font Trebuchet -fill silver -gravity center caption:\"KARTTUR\"  -shade 240x40 -quality 72 DstImage.png
 </span>
 
-To create an image with just the shades, use _-draw_ to redraw the text three times, with different offsets. Below I draw the text "KARTTUR" in silver with an offset +1+1, then I redraw in whitesmoke with an offset  -1-1, and then I draw in grey with no offset, finally I set grey to _-transparent_ using a _-fuzz_ of 90%.
+To create an image with just the shades, use _-draw_ to redraw the text three times, with different offsets. Below I draw the text "KARTTUR" in transparent white with an offset +2+2, then I redraw in a transparent very dark blue with an offset  -2-2, and then I draw in grey with no offset, finally I set grey to _-transparent_ using a _-fuzz_ of 90%.
 
-<span class='terminal'>convert -size 1800x300 xc:none -font Trebuchet -pointsize 300 -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' text 0,0 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% DstImage.png
-</span>
+<span class='terminal'>convert -size 240x180 xc:none -font Trebuchet -pointsize 40 -gravity center -draw \"fill \'RGBA(32,32,64,0.25)\' text 2,2 \'KARTTUR\' fill \'RGBA(255,255,255,0.25)\' text -2,-2 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% -quality 72 DstIage.jpg</span>
 
+![KARTTUR watermark]({{ site.commonurl }}/images/karttur-watermark_extrasmall.png)
+{: .pull-left}
+
+<br>
 The result is an image with only the shades of the text "KARTTUR", the text I use to emboss the watermark on the maps.
 
 ### Embossing watermark
 
-To emboss the text watermark, I take the ImageMagick command, and combine it with the image processing that cuts the maps as described in the [previous blog](../../install-imagemagick/) and nest it into a batch command ( cannot get a backslash plus parenthesis to dispaly in any way so you have to replace backslash C "\\C" with backslash parenthesis in two places):
+To emboss the text watermark, I take the ImageMagick command, and combine it with the image processing that cuts the maps as described in the [previous blog](../install-imagemagick/) and nest it into a batch command ( cannot get a backslash plus parenthesis to dispaly in any way so you have to replace backslash C "\\C" with backslash parenthesis in two places):
 
 {% raw %}
-<span class='terminal'>$ for i in \*.png; do  convert \\C -shave 5x15 +repage -border 2x2 -bordercolor black -resize 1900x \"$i\" \\) \\C -size 1800x300 xc:none -font Trebuchet -pointsize 300 -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\'  \" -transparent grey -fuzz 90% \\) -composite -quality 72 \"pub-images/${i%.\*}.jpg\"; done
+<span class='terminal'>$ for i in \*.png; do  convert \\C -shave 5x15 +repage -resize 1280x \"$i\" \\) \\C -size 1280x300 xc:none -font Trebuchet -pointsize 300 -gravity center -draw \"fill \'RGBA(32,32,64,0.25)\' text 2,2 \'KARTTUR\' fill \'RGBA(255,255,255,0.25)\' text -2,-2 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\'  \" -transparent grey -fuzz 90% \\) -composite -quality 72 \"pub-images/${i%.\*}.jpg\"; done
 </span>
 {% endraw %}
 
@@ -139,9 +170,11 @@ The command contains 1 main section, and two sub units, the first for cutting th
 
 I got a bit stuck on the above, because I did not keep the required blank spaces around the sub units slash+parenthesis, "\\C" and "\\)" .
 
+The embossed waterwark text on the image at the top of the page is created with the above command.
+
 ## Caption
 
-For my animated time-series, the font size depends on the image size and the length of the time-series, and I do not know it beforehand. I needed some way to rather fit text in a predefined space, than to set the font size. The solution is to define a _-geometry_ and then let ImageMagick fit the text you want to appear into that _-geometry_. Truly Magick for me, as this is exactly what I was looking for. With this solution _-pointsize_ is omitted, but you can still set the other font options outlined above.
+For my [animated time-series](../ffmpeg-movie/), the font size depends on the image size and the length of the time-series, and I do not know it beforehand. I needed some way to rather fit text in a predefined space, than to set the font size. The solution is to define a _-geometry_ and then let ImageMagick fit the text you want to appear into that _-geometry_. Truly Magick for me, as this is exactly what I was looking for. With this solution _-pointsize_ is omitted, but you can still set the other font options outlined above.
 
 <span class='terminal'>$ convert SrcImage.ext -size 200x75 -background none caption:\"My map\" -geometry +20+30 -composite DstImage.ext</span>
 
@@ -161,6 +194,13 @@ The above example left adjusts the text in the _-geometry_. If you want it cente
 Use _-rotate_ to rotate the text clockwise, inside the separated command for the _-geometry_ (if outside the whole image will be rotated):
 
 <span class='terminal'>$ convert SrcImage.png \\C -size 200x75 -background \"#990000\" label:\"My map\" -trim -gravity center -extent 200x75 -rotate \"-90\" \\) -gravity SouthEast -geometry +120+100 -composite label.png</span>
+
+The image below is the timeline and clock that I  _-composite_ with image frames to create [animations from time series of maps](../ffmpeg-movie/). The text in the image is created using ImageMagick, whereas the time line and clock are created using a Python script.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure2].file }}">
+<figcaption> {{ site.data.images[page.figure2].caption }} </figcaption>
+</figure>
 
 ## Resources
 

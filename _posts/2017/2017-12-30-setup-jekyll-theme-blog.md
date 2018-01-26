@@ -105,7 +105,7 @@ This will transfer your file to the <span class= 'file'>\_posts</span> folder, a
 
 If your server is up and running in "--watch" mode, you should be able to see your new post in your web browser. If not, you need to stop <span class='terminal'>ctrl-x</span> and restart the Jekyll server:
 
-<span class='terminal'>jekyll serve --watch</span>
+<span class='terminal'>$ jekyll serve --watch</span>
 
 Note that your theme might need another Jekyll command for serving up, if <span class='terminal'>jekyll serve --watch</span> does not work, look at the theme's documentation.
 

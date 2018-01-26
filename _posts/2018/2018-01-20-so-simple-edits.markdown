@@ -24,8 +24,8 @@ share: true
 		\- [Includes (footer)](#includes-footer)
 		\- [Javascript](#javascript)
 		\- [CSS](#css)
-		\- [Common assets and images](#common-assets-and-images)
-		\- [Front matter](#common-assets-and-images)
+		\- [Common assets and media](#common-assets-and-media)
+		\- [Front matter](#common-assets-and-media)
 <script src="https://karttur.github.io/common/assets/js/karttur/togglediv.js"></script>
 ## Introduction
 
@@ -261,10 +261,12 @@ I then added CSS for the \<span\> tags that are used throughout the Karttur site
 {% include widgets/toggle-code.html  toggle-text=text-capture  %}
 </div>
 
-### Common assets and images
+### Common assets and media
 
 As I chose to publish what I do in several thematic blog sites (repositories) I created a solution where I could use a common set of assets (javascript, css, fonts and other resources) across all sites. As almost every Karttur page contains a map (image) at the top, I also changed the YAML for images, created a separate .yml file for images <span class='file'>\_data/images.yml</span>,
 and assembled all images to the url site that also contains the other common resources. The changes needed to create a separate common resource site is outlined in [another post](../common-assets/).
+
+I then created a similar solution for movies
 
 ### Front matter (\_config.yml and YAML)
 

@@ -13,6 +13,9 @@ tags:
   - image manipulation
   - macOS
 image: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
+figure1: TRMM_countries
+figure2A:  avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-nosvg
+figure2B:  avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-svg
 date: "2018-01-17 08:37"
 comments: true
 share: true
@@ -45,9 +48,14 @@ If macOS does not find the command <span class='terminal'>$ inkscape</span> you 
 
 But you should not have to worry about that if your InkScape installation completed without errors.
 
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure1].file }}">
+<figcaption> {{ site.data.images[page.figure1].caption }} </figcaption>
+</figure>
+
 ## ImageMagick vector processing
 
-The vector files that I use for map layout are produced from a Geographical Information System (GIS), introduced in [another blog](https://karttur.github.io/setup-ide/setup-ide/install-gis/). If you do not have a vector file, go ahead and draw a vector in InkScape and save it as a .svg file.
+The vector files that I use for map layout are produced from a Geographical Information System (GIS), introduced in [another blog](https://karttur.github.io/setup-ide/setup-ide/install-gis/). Any editing that I need to do is then done in <span class='app'>IncScape</span>. If you do not have a vector file, go ahead and draw a vector in InkScape and save it as a .svg file.
 
 Assuming that you have a vector file (.svg) and want to just convert it to an image (rasterize in GIS jargon), the ImageMagick <span class='app'>Terminal</span> command is:
 
@@ -65,7 +73,7 @@ To force a non-proportional image, set both width (_w_) and height (_h_) followe
 
 <span class='terminal'>$ convert -density 72 -resize wxh! SrcVector.svg DstImage.png</span>
 
-If you want to remove the white background from _DstImage_, set _-background_ to _none_:
+If you want to remove the white background (that at least I seem to get when I use .svg files in ImageMagick), set _-background_ to _none_:
 
 <span class='terminal'>$ convert -background none -density 72 -resize wx SrcVector.svg DstImage.png</span>
 
@@ -75,15 +83,11 @@ You can also use InkScape for converting vector files to images, either from Ink
 
 ### Vector overlay
 
-ImageMagick can be used for putting a vector on top of an image, that is how I to get the global shoreline on top of the rainfall map at the top of this page. The ImageMagic command for combining images, or vectors, is _-composite_.
+ImageMagick can be used for putting a vector on top of an image, that is how I get the global shoreline on top of the rainfall map at the top of this page. The ImageMagic command for combining images, or vectors, is _-composite_.
 
 <span class='terminal'>$ convert -composite SrcImage.tif SrcVector.svg DstImage.png</span>
 
-On the command-line, the vector (overlay) must be entered **after** the image to end up on top in _DstImage_. In the command above the _SrcVector_ is neither transparent, nor is it fitted to the _SrcImage_, and the result is probably not what you wanted. You have to _-resize_ the vector to fit the _SrcImage_, and set the _SrcVector_ _-background_ to _none_.
-
-To get rid of the white background in the _SrcVector_, rearrange the command and add _-background_ _none_:
-
-<span class='terminal'>$ convert SrcImage.tif -background none SrcVector.svg -composite DstImage.png</span>
+On the command-line, the vector (overlay) must be entered **after** the image to end up on top in _DstImage_. In the command above the _SrcVector_ is neither transparent, nor is it fitted to the _SrcImage_, and the result is probably not what you wanted.
 
 To _-resize_ the vector to fit your image (as I want for my maps), find out the dimensions of your image:
 
@@ -95,6 +99,12 @@ Then set the dimensions for width and height using _-resize_, and force the vect
 
 You can put the overlay vector anywhere in the _SrcImage_, resized to any size. For instance by combining _-resize_, _-geometry_ and _gravity_ as in [this post](../add-text-to-image/).
 
+<figure class="half">
+	<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure2A].file }}" alt="image">
+	<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure2B].file }}" alt="image">
+	<figcaption>The original map used at the top of this page (left), and with shoreline overlaid and embossed watermark (right).</figcaption>
+</figure>
+
 ### Emboss watermark
 
 The image map at the top of the page also has an embossed watermark. The command for only creating the watermark (as explained in an [earlier post](../add-text-to-image/)) is:
@@ -103,11 +113,11 @@ The image map at the top of the page also has an embossed watermark. The command
 
 Nested into the command overlaying the vector to an existing image, the command becomes:
 
-<span class='terminal'>$ convert \\C -border 2x2 -bordercolor black SrcImage.ext \\) \\C -background none -resize wxh! SrcVector.svg \\) -composite  \\C -size wxh xc:none -font Trebuchet -pointsize point -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \\) -composite DstImage.ext</span>
+<span class='terminal'>$ convert SrcImage.ext \\C -background none -resize wxh! SrcVector.svg \\) -composite  \\C -size wxh xc:none -font Trebuchet -pointsize point -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \\) -composite DstImage.ext</span>
 
 And then looping this command for all images in a folder, while saving the _DstImage_ with the same name as the _SrcImage_ but as a compressed jpg in a sub-folder (<span class='file'>pub-images</span>) (see [this post](../add-text-to-image/) for details on the command-line batch processing):
 
-<span class='terminal'>$ for i in \*.tif; do convert \\C -border 2x2 -bordercolor black SrcImage.ext \\) \\C -background none -resize wxh! SrcVector.svg \\) -composite  \\C -size wxh xc:none -font Trebuchet -pointsize point -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \\) -composite -quality 72 \"pub-images/${i%.\*}.jpg\"; done</span>
+<span class='terminal'>$ for i in \*.tif; do convert \"$i\" \\C -background none -resize wxh! SrcVector.svg \\) -composite  \\C -size wxh xc:none -font Trebuchet -pointsize point -gravity center -draw \"fill silver text 1,1 \'KARTTUR\' fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \\) -composite -quality 72 \"pub-images/${i%.\*}.jpg\"; done</span>
 
 ## Resources
 

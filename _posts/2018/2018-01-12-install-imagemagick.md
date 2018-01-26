@@ -11,6 +11,9 @@ tags:
   - ImageMagick
   - macOS
 image: avg-rntwi_RNTWI_java_2001-2016_AS
+figure1: avg-rntwi_RNTWI_id_2001-2016_large
+figure2A: avg-rntwi_RNTWI_id_2001-2016_medium
+figure2B: avg-rntwi_RNTWI_java_2001-2016_medium
 date: '2018-01-12 16:39'
 comments: true
 share: true
@@ -50,17 +53,15 @@ Then install ImageMagick from the <span class='app'>Terminal</span> command-line
 
 <span class='terminal'>$ brew install imagemagick --with-librsvg</span>
 
-The addition <span class='terminal'>--with-librsvg</span> extends ImageMagick with vector processing capacity, that I use for creating map layouts as explained in [another blog].
+The addition <span class='terminal'>--with-librsvg</span> extends ImageMagick with vector processing capacity, that I use for creating map layouts as explained in [another post](../inkscape/).
 
 If you want to remove a Homebrew installed app, use the command:
 
 <span class='terminal'>$ brew remove imagemagick</span>
 
-THus, if you already have ImageMagick installed via Homebrew and want to extend ImageMagick with the vector processing capacity, first remove and then install again, with the installation command including <span class='terminal'>--with-librsvg</span>.
+If you already have ImageMagick installed via Homebrew and want to extend ImageMagick with the vector processing capacity, first remove and then install again, with the installation command including <span class='terminal'>--with-librsvg</span>.
 
 ## Basic ImageMagick commands
-
-This post only covers the basic ImageMagick commands that I used for editing the size of the maps on top of most of Karttur´s web-pages as GitHub.com. The ImageMagick site contains a complete list of [command-line options](http://www.imagemagick.org/script/command-line-options.php).
 
 Start a <span class='app'>Terminal</span> session, and go to the directory where you have the images you want to work with.
 
@@ -96,6 +97,25 @@ If you want to keep the name of your image after ImageMagick manipulations, you 
 
  If you do not add any other ImageMagick function, <span class='terminal'>$ mogrify</span> will simply create a copy of _SrcImage.ext_ (where ext is the file format extension). You can always use <span class='terminal'>$ mogrify</span> instead of <span class='terminal'>$ convert</span>, but below I will use <span class='terminal'>$ convert</span>.
 
+### Set border and colors
+
+If you want to have a border on your images, you have to give two  ImageMagick parameters _-border_ and _-bordercolor_:
+
+<span class='terminal'>$ convert -border sidewidthxtopbottomwidth -bordercolor  \"HEXcode\" SrcImage.ext pub-images/DstImage.ext</span>
+
+where _sidewidth_ is the border width at the sides, _topbottomwidth_ the width at the top and bottom, and quoted _HEXcode_ the color code. HEX-code is a standardized hexadecimal system for setting colors as "#RRGGBB". The [w3schools.com site](https://www.w3schools.com) gives a short introduction to [HEX colors](https://www.w3schools.com/colors/colors_hexadecimal.asp), including a tool for [color picking](https://www.w3schools.com/colors/colors_picker.asp). ([w3schools.com](https://www.w3schools.com) is also a generally useful resource for learning html and how to build web-pages). To set a black border width of 2 pixels on all sides, give HEX code = \"#000000\", interpreted as no [00] red, no [00] green and no [00] blue, and then the ImageMagick command for setting the borders (png file type):
+
+<span class='terminal'>$ convert -border 2x2 -bordercolor \"#000000\" SrcImage.png pub-images/DstImage.png</span>
+
+ImageMagick also understands the html accepted standard color names, also listed on the [w3schools.com](https://www.w3schools.com/colors/colors_names.asp) site. Instead of  \"#000000\" you can simply use (unquoted) <span class='terminal'>-bordercolor black</span>. If you want to use transparency, you can instead give colors as quouted "RGBA\(R,G,B,A\)", with the colors (RGB) ranging for 0 to 255, and alpha (A) set as a decimal between 0 (completely transparent) and 1 (completely opaque).
+
+The image below shows a map of Indonesia produced by karttur´s Geo Imagine Framework, with a black frame of 2x2 pixels.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure1].file }}">
+<figcaption> {{ site.data.images[page.figure1].caption }} </figcaption>
+</figure>
+
 ### Crop image
 
 The _-crop_ function cuts out a rectangular region. I use _-crop_ to cut out maps to fit the width of my blogs, and to have a wide landscape perspective.
@@ -106,9 +126,9 @@ where _w_ = the width of the _DstImage_, _h_ = the height, _startx_ the column i
 
 The example below cuts a png image (a large map) to have the dimensions I use for maps at the top of Karttur´s GitHub pages.
 
-<span class='terminal'>$ convert -crop 1900x400+10+10 SrcImage.png pub-images/DstImage.jpg</span>
+<span class='terminal'>$ convert -crop 1280x300+10+10 SrcImage.png pub-images/DstImage.jpg</span>
 
-_DstImage_ will get a size (in pixels) of 1900 columns and 400 rows, starting at column 10 and row 10 in _SrcImage_. The _SrcImage_ image is a png and the result, _DstImage_, will be a jpg image (with no compression, as the _-quality_ is not stated).
+_DstImage_ will get a size (in pixels) of 1280 columns and 300 rows, starting at column 10 and row 10 in _SrcImage_. The _SrcImage_ image is a png and the result, _DstImage_, will be a jpg image (with no compression, as the _-quality_ is not stated).
 
 ### Shave
 
@@ -123,18 +143,6 @@ where _shavesides_ is the width (in pixels) that you want to shave away along th
 Another options is to use _-trim_ that removes
 edges that are the same color as the corner pixels. If you combine _-trim_ with the function _-fuzz_, ImageMagick also removes pixels of nearly the same color (with 'nearness' defined either in absolute or relative terms) as the corners. _-fuzz_ can be used together with several other ImageMagick functions, as explained in the [online manual](http://www.imagemagick.org/script/command-line-options.php).
 
-### Set border
-
-If you want to have a border on your images, like on the map at the top of this page, you have to give two  ImageMagick parameters _-border_ and _-bordercolor_:
-
-<span class='terminal'>$ convert -border sidewidthxtopbottomwidth -bordercolor  \"HEXcode\" SrcImage.ext pub-images/DstImage.ext</span>
-
-where _sidewidth_ is the border width at the sides, _topbottomwidth_ the width at the top and bottom, and quoted _HEXcode_ the color code. HEX-code is a standardized hexadecimal system for setting colors as "#RRGGBB". The [w3schools.com site](https://www.w3schools.com) gives a short introduction to [HEX colors](https://www.w3schools.com/colors/colors_hexadecimal.asp), including a tool for [color picking](https://www.w3schools.com/colors/colors_picker.asp). ([w3schools.com](https://www.w3schools.com) is also a generally useful resource for learning html and how to build web-pages). I choose to set a border width of 2 pixels on all sides, a black border (HEX code = \"#000000\", interpreted as no [00] red, no [00] green and no [00] blue), and then the ImageMagick command for setting the borders like on the map at the top of the page becomes (png file type):
-
-<span class='terminal'>$ convert -border 2x2 -bordercolor "#000000" SrcImage.png pub-images/DstImage.png</span>
-
-ImageMagick also understands the html accepted standard color names, also listed on the [w3schools.com](https://www.w3schools.com/colors/colors_names.asp) site. Instead of  \"#000000\" you can simply use (unquoted) <span class='terminal'>-bordercolor black</span>.
-
 ### Resize
 
 With the ImageMagick _-resize_ function, you can change the dimensions of an image.
@@ -147,17 +155,29 @@ The image will be proportionally enlarged or reduced to fit the given size. If t
 
 <span class='terminal'>$ convert -resize wxh! +repage SrcImage.png pub-images/DstImage.png</span>
 
-In my case (the maps at the top of each page), I wanted the maps to have the same width (1900 pixels), and then I only give the _width_ value:
+In my case (the maps at the top of each page), I wanted the maps to have the same width (1280 pixels), and then I only give the _width_ value:
 
- <span class='terminal'>$ convert -resize 1900x SrcImage.png pub-images/DstImage.png</span>
+ <span class='terminal'>$ convert -resize 1280x SrcImage.png pub-images/DstImage.png</span>
 
-To only _-resize_ images larger or smaller than a specific width or height, ImageMagick accept the signs _>_ and _<_, but then you have to quote the _-resize_ parameter. To _-resize_ only images larger than 1900 pixels in width:
+To only _-resize_ images larger or smaller than a specific width or height, ImageMagick accept the signs _>_ and _<_, but then you have to quote the _-resize_ parameter. To _-resize_ only images larger than 1280 pixels in width:
 
-<span class='terminal'>$ convert -resize \"1900>x\" SrcImage.ext pub-images/DstImage.ext</span>
+<span class='terminal'>$ convert -resize \"1280>x\" SrcImage.ext pub-images/DstImage.ext</span>
 
-Images smaller than 1900 pixels will keep their original size, and _DstImage_ will become an exact copy of _SrcImage_.
+Images smaller than 1280 pixels will keep their original size, and _DstImage_ will become an exact copy of _SrcImage_.
 
 You can also apply filters for the _-resize_ command, as explained in the [ImageMagick manual](http://www.imagemagick.org/script/command-line-options.php#resize).
+
+The images below are cropped and resized versions of the Indonesian map above. The command for creating the _-resize_ and _-crop_ of Java is:
+
+<span class='terminal'>convert -resize 1200x -gravity south -crop 596x150-50+5 -border 2x2 -bordercolor black SrcImage.tif -quality 72 pub-images/DstImage.jpg</span>
+
+<figure class="half">
+	<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure2A].file }}" alt="image">
+	<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure2B].file }}" alt="image">
+	<figcaption>Two maps cropped from the original map of Indonesia above.</figcaption>
+</figure>
+
+How to create the embossed watermark with the text "KARTTUR" is covered in [another post](../add-text-to-image/)
 
 ### More functions
 
@@ -173,20 +193,20 @@ You can combine ImageMagick functions in a single command, but you must keep the
 
 <span class='terminal'>$ convert -border 1x1 -bordercolor black -quality 80 SrcImage.png pub-images/DstImage.jpg</span>
 
-You can expand the command with as many functions you need to create the desired _DstImage_. You can even nest commands for different images within a single command-line, as explained in the [nex post](../../add-text-to-image/)
+You can expand the command with as many functions you need to create the desired _DstImage_. You can even nest commands for different images within a single command-line, as explained in the [another post](../add-text-to-image/)
 
 ### Terminal Batch processing
 
 You can use the <span class='app'>Terminal</span> to set up batch processing, either for single or combined commands. You can then process a whole folder full of images in one go:
 
-<span class='terminal'>$ for i in \*.png; do convert -shave 5x5 +repage -border 2x2 -bordercolor black -resize 1900x -quality 80 \"$i\" \"pub-images/${i%.\*}.jpg\"; done</span>
+<span class='terminal'>$ for i in \*.png; do convert -shave 5x15 +repage -border 2x2 -bordercolor black -resize 1280x -quality 80 \"$i\" \"pub-images/${i%.\*}.jpg\"; done</span>
 
-In the <span class='app'>Terminal</span> command line semi-colon ";" denotes a new command-line function. Disentangling and commenting ("#") the code above can be interpreted as:
+In the <span class='app'>Terminal</span> command line semi-colon ";" denotes a new command-line function. To write a command over several lines, you instead glue the command at the end of each line with a backslash (\\). Disentangling and commenting ("#") the code above, it can be interpreted as:
 
 ```
 for i in *.png # Get all files of type png in the present folder and loop while labelling each image i in the loop
     do #starts the loop of the ImageMagick combined functions
-    convert -shave 5x15 +repage -border 2x2 -bordercolor "#000000" -resize 1900x -quality 80
+    convert -shave 5x15 +repage -border 2x2 -bordercolor "#000000" -resize 1280x -quality 80
     "$i" # is interpreted as the text of the parameter "i" = the filename
     done # ends the loop  
 ```
