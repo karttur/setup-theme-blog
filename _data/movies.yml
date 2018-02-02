@@ -6,3 +6,12 @@ twi-percent_MCD43A4_oka-makgadik_2001-2016_v005-twi01-MS:
     source: null
     width: 720
     height: 576
+
+twi-trmm-clock-basin_mp4_oka-basin_2001-2016_MS:
+    file: twi-trmm-clock-basin_mp4_oka-basin_2001-2016_MS.mp4
+    author: Thomas Gumbricht
+    caption: Soil moisture and rainfall 2001-2016, Okavango River basin
+    credit: null
+    source: null
+    width: 716
+    height: 780

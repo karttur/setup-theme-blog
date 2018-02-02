@@ -266,7 +266,30 @@ I then added CSS for the \<span\> tags that are used throughout the Karttur site
 As I chose to publish what I do in several thematic blog sites (repositories) I created a solution where I could use a common set of assets (javascript, css, fonts and other resources) across all sites. As almost every Karttur page contains a map (image) at the top, I also changed the YAML for images, created a separate .yml file for images <span class='file'>\_data/images.yml</span>,
 and assembled all images to the url site that also contains the other common resources. The changes needed to create a separate common resource site is outlined in [another post](../common-assets/).
 
-I then created a similar solution for movies
+I also created a similar solution for movies, with a separate .yml file <span class='file'>\_data/movies.yml</span>. All movie files are stored in the 'common' resource repository, under a <span class='file'>movie</span> folder.
+
+To show the movie below using the solution I chose, the movie must be given in the <span class='file'>\_data/movies.yml</span> file:
+
+```
+twi-percent_MCD43A4_oka-makgadik_2001-2016_v005-twi01-MS:
+    file: twi-percent_MCD43A4_oka-makgadik_2001-2016_v005-twi01-MS.mp4
+    author: Thomas Gumbricht
+    caption: Soil moisture 2001-2016, Okavango-Makgadikgadi, Botswana
+    credit: null
+    source: null
+    width: 720
+    height: 576
+```
+
+The markdown file must then link to the file, which is done using liquids:
+```
+<figure>
+<iframe src="{{ site.commonurl }}/movies/{{ site.data.movies[page.movie1].file }}" width="{{ site.data.movies[page.movie1].width }}" height="{{ site.data.movies[page.movie1].height }}" frameborder="0">
+</iframe>
+<figcaption> {{ site.data.movies[page.movie1].caption }} </figcaption>
+</figure>
+```
+The movie parameter ("movie1" in the example above), must be added to the page YAML, lining the parameter to the correct entry or record in <span class='file'>\_data/movies.yml</span>, as shown in the next section on Front matter. The movie must then also be stored online at the url pointed to. In my case that is then under Karttur's common repository.
 
 ### Front matter (\_config.yml and YAML)
 
@@ -292,6 +315,7 @@ tags:
   - YAML edit
   - assets
 image: ts-upsl-rntwi_RNTWI_id_2001-2016_AS
+movie1: twi-percent_MCD43A4_oka-makgadik_2001-2016_v005-twi01-MS
 date: '2018-01-20 14:05'
 comments: true
 share: true

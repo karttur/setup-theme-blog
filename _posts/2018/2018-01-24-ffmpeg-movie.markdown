@@ -68,18 +68,18 @@ where YYYY and MM indicate the year and month represented in the image. The imag
 
 <span class='terminal'>$ convert \\C -resize 716x -border 2x2 -bordercolor black SrcImage.tif \\) \\C -size 716x150 xc:none -font Trebuchet -pointsize 150 -gravity center -draw \"fill silver text 1,1 \'KARTTUR\'  fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \) -composite -quality 72 DstImage.jpg</span>
 
-The image width then becomes 720 pixels (716 + 2*border), which is the width of old analogue television sets. I will use that dimensions for creating an animation in this post.
+The image width then becomes 720 pixels (716 + 2*border), which is the width of old analogue television sets (720x576). I will use that dimension for creating an animation in this post.
 
 <figure>
 <img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure1].file }}">
 <figcaption> {{ site.data.images[page.figure1].caption }} </figcaption>
 </figure>
 
-I do, however, want to create an animation only of the Okavango swamps and the Makdagikgadi pans in northern Botswana. I must thus first _-resize_ and _-crop_ my image sequence to fit the movie dimesnions I chose.
+I do, however, want to create an animation only of the Okavango swamps and the Makdagikgadi pans in northern Botswana. I must thus first _-resize_ and _-crop_ my image sequence to fit the movie dimensions I chose.
 
 ### Resize and crop images in time series
 
-Once you have decided which region in your map (image) to use for creating a movie, use ImageMagick to _-resize_ and _-crop_ your image. I also put the embossed watermark text on my films, so my ImageMagick command for getting the image sequence I want is (again you have to replace capital "C" with "("):
+Once you have decided which region in your map (image) to use for creating a movie, use ImageMagick to _-resize_ and _-crop_ your images. Do not compress the images, but keep the png format throughout. The compression will be set in the move with FFmpeg. I also put the embossed watermark text on my films, so my ImageMagick command for getting the image sequence I want is (again you have to replace capital "C" with "("):
 
 <span class='terminal'>$ for i in \*.tif; do convert \\C -resize 1450x -crop 720x576+250+55 \"$i\" \\) \\C -size 720x150 xc:none -font Trebuchet -pointsize 100 -gravity center -draw \"fill silver text 1,1 \'KARTTUR\'  fill whitesmoke text -1,-1 \'KARTTUR\' fill grey text 0,0 \'KARTTUR\' \" -transparent grey -fuzz 90% \\) -composite  \"pub-movies/${i%.\*}.png\"; done</span>
 
@@ -100,7 +100,7 @@ caption:\"Linyanti\" -geometry +240+64 -composite
 
 ## ImageClock
 
-The ImageClock is created from a Python package that I wrote, and is part of Karttur's Geo Imagine Framework. It is not publicly available. The trick is that it produces image clocks with files named exactly corresponding the image maps, but in a separate folder. Below is the <span class='package'>ImageClock</span> png file for the image frame above (black is set to transparent in the overlay, but shown in the image below).
+The ImageClock is created from a Python package that I wrote, and is part of Karttur's Geo Imagine Framework. It is not publicly available. The trick is that it produces image clocks with files named exactly corresponding the image maps, but in a separate folder. Below is the <span class='package'>ImageClock</span> file for the image frame above (black is set to transparent in the overlay, but shown in the image below).
 
 <figure>
  <img  title="{{ site.data.images[page.figure3].credit }}" src="{{ site.commonurl }}/images/{{ site.data.images[page.figure3].file }}">

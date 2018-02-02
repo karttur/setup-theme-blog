@@ -1,3 +1,34 @@
+twi-percent_MCD43A4_oka-basin_200409_v005-movieframe:
+    file: twi-percent_MCD43A4_oka-basin_200409_v005-movieframe.jpg
+    author: Thomas Gumbricht
+    caption: Movie frame combining soil moisture, rainfall, timeline/clock and river basin, and with embossed watermark.
+    credit: null
+    source: null
+oka-basin-border:
+    file: oka-basin-border-s.jpg
+    author: Thomas Gumbricht
+    caption: Soil moisture (TWI) Okavango basin sept 2004
+    credit: null
+    source: oka-basin-border.jpg
+twi-percent_MCD43A4_oka-basin_200409_clock:
+    file: twi-percent_MCD43A4_oka-basin_200409_clock-s.jpg
+    author: Thomas Gumbricht
+    caption: Timeline/clock image sept 2004
+    credit: null
+    source: twi-percent_MCD43A4_oka-basin_200409_clock.jpg
+twi-percent_MCD43A4_oka-basin_200409_rainfall:
+    file: twi-percent_MCD43A4_oka-basin_200409_rainfall-s.jpg
+    author: Thomas Gumbricht
+    caption: Rainfall (TRMM) Okavango basin sept 2004
+    credit: null
+    source: twi-percent_MCD43A4_oka-basin_200409_rainfall.jpg
+twi-percent_MCD43A4_oka-basin_200409_twi:
+    file: twi-percent_MCD43A4_oka-basin_200409_twi-s.jpg
+    author: Thomas Gumbricht
+    caption: Soil moisture (TWI) Okavango basin sept 2004
+    credit: null
+    source: twi-percent_MCD43A4_oka-basin_200409_twi.jpg
+
 avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-nosvg:
     file: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_small-nosvg.jpg
     author: Thomas Gumbricht
