@@ -141,7 +141,7 @@ As the created animation is intended for publication over the internet, you need
 
 where _-vcodec_ _libx264_ is the H.264 video codec, _-pix_fmt_ specifies the pixel color coding resampling (_yuv420p_ is widely used for H.264 movies) _-crf_ is the quality. To reduce the file size you can set a lower quality, by increasing _-crf_. The quality for an animated map can be set rather low, so I will go for _-crf 35_ to reduce the file size. You can also set a target bitrate (the data transfer per second) by using the _-b_ option. For my movie I set the target bitrate to 1M (1000K), and the animation shown below is created with following ffmpeg command:
 
-<span class='terminal'>$ ffmpeg -r 3 -f image2 -pattern_type glob -i \'\*.png\' -vcodec libx264 -b 1M -pix_fmt yuv420p -crf 35 DstMovie.mp4</span>
+<span class='terminal'>$ ffmpeg -r 3 -f image2 -pattern_type glob -i \'\*.png\' -vcodec libx264 -b:v 1M -pix_fmt yuv420p -crf 35 DstMovie.mp4</span>
 
 
 <figure>
@@ -152,7 +152,7 @@ where _-vcodec_ _libx264_ is the H.264 video codec, _-pix_fmt_ specifies the pix
 
 You can increase the compatibility of the movie by adding the option _-profile:v baseline_. For me that almost doubled the file size. As this animation is intended for use by web browser, the published version does not have the _-profile:v baseline_.
 
-<span class='terminal'>$ ffmpeg -r 3 -f image2 -pattern_type glob -i \'\*.png\' -vcodec libx264 -b 1M -pix_fmt yuv420p -profile:v baseline -crf 35 DstMovie.mp4</span>
+<span class='terminal'>$ ffmpeg -r 3 -f image2 -pattern_type glob -i \'\*.png\' -vcodec libx264 -b:v 1M -pix_fmt yuv420p -profile:v baseline -crf 35 DstMovie.mp4</span>
 
 ## Resources
 

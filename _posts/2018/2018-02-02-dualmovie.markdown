@@ -100,7 +100,7 @@ With the frames ready, the movie is created using FFmpeg as suggested in the [pr
 ffmpeg -r 3 -f image2 -pattern_type glob -i '*.png' -vcodec libx264 -b:v 2M -pix_fmt yuv420p -crf 35 DstMovie.mp4
 ```
 
-The movie has a dimension of 992x1080 (approximately 1 km spatial resolution on the ground for the soil moisture). The dimensions when shown below is reduced to 716x780 to fit neatly to the layout in this blog. If you download the movie, and view it on you local machine it will have the original dimensions of 992x1080. (The original data is at approximately 500 m spatial resolution, and a movie at full resolution would thus be 1986×2164).
+The movie has a dimension of 992x1080 (approximately 1 km spatial resolution on the ground for the soil moisture). The dimensions when shown below is reduced to 716x780 to fit neatly to the layout in this blog. If you download the movie, and view it on your local machine it will have the original dimensions of 992x1080. (The original data is at approximately 500 m spatial resolution, and a movie at full resolution would thus be 1986×2164).
 
 <figure>
 <iframe src="{{ site.commonurl }}/movies/{{ site.data.movies[page.movie1].file }}" width="{{ site.data.movies[page.movie1].width }}" height="{{ site.data.movies[page.movie1].height }}" frameborder="0">
