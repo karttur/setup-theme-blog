@@ -14,9 +14,38 @@ image: ts-mdsl-rntwi_RNTWI_java_2001-2016_AS
 comments: true
 share: true
 ---
-
 **Contents**
-
+	\- [Introduction](#introduction)
+	\- [Scholar sites and academic social media](#scholar-sites-and-academic-social-media)
+	\- [Layout](#layout)
+		\- [resume.html](#resumehtml)
+		\- [pdfpage.html](#pdfpagehtml)
+		\- [pubpage.html](#pubpagehtml)
+	\- [\_includes](#includes)
+		\- [pdfcontent.html](#pdfcontenthtml)
+		\- [simplefooter.html](#simplefooterhtml)
+		\- [publication.html](#publicationhtml)
+	\- [YAML for pages in the Resumé](#yaml-for-pages-in-the-resum)
+	\- [Navigation](#navigation)
+		\- [Home and CV](#home-and-cv)
+		\- [Projects](#projects)
+		\- [Project Example (okavango)](#project-example-okavango)
+		\- [Journal articles](#journal-articles)
+		\- [Refereed chapters](#refereed-chapters)
+		\- [Conference Proceedings](#conference-proceedings)
+			\- [Project post (pdfpage.html)](#project-post-pdfpagehtml)
+			\- [Project post (pubpage.html)](#project-post-pubpagehtml)
+		\- [Publications](#publications)
+		\- [Journal articles](#journal-articles)
+		\- [Atlas](#atlas)
+		\- [Book chapters](#book-chapters)
+		\- [Scientific reports](#scientific-reports)
+		\- [Conference proceedings](#conference-proceedings)
+		\- [Teaching and Talks/Posters](#teaching-and-talksposters)
+		\- [Talks](#talks)
+		\- [Posters](#posters)
+		\- [Supplement](#supplement)
+		\- [Blog](#blog)
 
 ## Introduction
 
