@@ -58,7 +58,7 @@ As I have worked in academia and international development, my resumé will cent
 
 [Google scholar](https://scholar.google.se/) provides indexing of scholarly literature. As a scholar you can sign up and grab control of your own page, add a picture and a link to some other url.
 
-There are many other sites offering [academic databases and search engines](https://en.wikipedia.org/wiki/List_of_academic_databases_and_search_engines). Some of which are open, some require that you sign up, and some are only accessible by paying subscriptions fees. The largest database is [Scopus](https://www.scopus.com), it is owned by the publisher Elsevier and you have to subscribe to get full access. But as I sometimes do review tasks for Elsevier journals. I get access now and then.
+There are many other sites offering [academic databases and search engines](https://en.wikipedia.org/wiki/List_of_academic_databases_and_search_engines). Some of which are open, some require that you sign up, and some are only accessible by paying subscriptions fees. The largest database is [Scopus](https://www.scopus.com), it is owned by the publisher Elsevier and you have to subscribe to get full access. But as I sometimes do review tasks for Elsevier journals, I get access now and then.
 
 The largest social media site for scholars is [ReasearchGate](https://www.researchgate.net), it is similar to the professional social media site [linkedin](https://www.linkedin.com/).
 
@@ -385,9 +385,9 @@ In the following sections I use navigation entries to explain how the resumé bl
 
 ### Home and CV
 
-The [home (front) page of the resumé](https://karttur.github.io/professional/) and the [CV page](https://karttur.github.io/professional/CV/) use the resume layout (scholar profile links in left column) but then only contain ordinary markdown code, with no calls to any \_include and no posts included.
+The [home (front) page of the resumé](https://karttur.github.io/professional/) and the [CV page](https://karttur.github.io/professional/cv/) use the resume layout (scholar profile links in left column) but then only contain ordinary markdown code, with no calls to any \_include and no posts included.
 
-Home is changed to markdown file <span class='file'>index.md</span> in the root of the repository. Also CV is a markdown file, but under the path CV: <span class='file'>cv/index.md</span>.
+Home is changed to markdown file <span class='file'>index.md</span> in the root of the repository. Also CV is a markdown file, but under <span class='file'>cv/index.md</span>.
 
 ### Projects
 
@@ -446,7 +446,7 @@ projurl: "../okavango/"
 {% endraw %}
 ```
 
-The project post contains nothing but the YAML. But it expects to find a subfolder (e.g. "../okavango/" in the example), and you must also add a markdown page that captures any post related to the projectid ("okavango"). [The live project page](https://karttur.github.io/professional/projects/) of my resumé.
+The project post contains nothing but the YAML. But it expects to find a subfolder (e.g. "../okavango/" in the example), and you must also add a markdown page that captures any post related to the projectid ("okavango"). Link to the live [project page](https://karttur.github.io/professional/projects/) in my resumé.
 
 ### Project Example (okavango)
 
@@ -498,7 +498,7 @@ I have since then used my data and knowledge about the Okavango in many other st
 {% endraw %}
 ```
 
-The project markdown file (<span class='file'>okavango/index.md</span>) loops over all the posts in the blog, and first looks for different categories ("journal", "refereechapter" and "conference" in the example), and then includes the post if the category is correct and also the projectid is correct ("okavango" in the example). All identified posts are included through the liquid calling the \_include publication.html. The [Okavango project](https://karttur.github.io/professional/okavango/) at my professional pages.
+The project markdown file (<span class='file'>okavango/index.md</span>) loops over all the posts in the blog, and first looks for different categories ("journal", "refereechapter" and "conference" in the example), and then includes the post if the category is correct and also the projectid is correct ("okavango" in the example). All identified posts are included through the liquid calling the \_include publication.html. Link to the live [Okavango project](https://karttur.github.io/professional/okavango/) in my professional pages.
 
 Let us check two posts, of which the first belongs to the  "okavango" project.
 
@@ -687,4 +687,4 @@ Under supplements I have collected bits and pieces that really do not fit under 
 
 ### Blog
 
-The blog page just links to my other blogs, there are no posts linked to the blog page.
+The blog page links to my other blogs, there are no posts linked to the blog page. The file <span class='file'>blog/index.md</span> is just compoed of ordinary markdown code with no liquids.

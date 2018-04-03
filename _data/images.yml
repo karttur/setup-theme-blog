@@ -842,3 +842,36 @@ tropwetlandmap:
     caption: Wetlands
     credit: null
     source: null
+
+photo-fix_haze_im_orig:
+  file: photo-fix_haze_im_orig.jpg
+photo-fix_haze_im_autolevel:
+  file: photo-fix_haze_im_autolevel.jpg
+photo-fix_haze_im_contrast-stretch:
+  file: photo-fix_haze_im_contrast-stretch.jpg
+photo-fix_haze_im_contrast-stretch-auto-gamma:
+  file: photo-fix_haze_im_contrast-stretch-auto-gamma.jpg
+photo-fix_haze_fred_autotone:
+  file: photo-fix_haze_fred_autotone.jpg
+photo-fix_haze_fred_retinex:
+  file: photo-fix_haze_fred_retinex.jpg
+photo-fix_haze_fred_space:
+  file: photo-fix_haze_fred_space.jpg
+photo-fix_haze_fred_space2:
+  file: photo-fix_haze_fred_space2.jpg
+photo-fix_haze_im_tgfix-standard:
+  file: photo-fix_haze_im_tgfix-standard.jpg
+photo-fix_haze_im_tgfix-boost:
+  file: photo-fix_haze_im_tgfix-boost.jpg
+photo-fix_haze_im_tgfix-color:
+  file: photo-fix_haze_im_tgfix-color.jpg
+photo-fix_haze_im_tgfix-level:
+  file: photo-fix_haze_im_tgfix-level.jpg
+photo-fix_shadow_im_orig:
+  file: photo-fix_shadow_im_orig.jpg
+photo-fix_shadow_im_tgfix:
+  file: photo-fix_shadow_im_tgfix.jpg
+photo-fix_shadow_im_autolevel:
+  file: photo-fix_shadow_im_autolevel.jpg
+photo-fix_shadow_im_shadhigh:
+  file: photo-fix_shadow_im_shadhigh.jpg
