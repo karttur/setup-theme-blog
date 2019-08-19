@@ -4,7 +4,7 @@ title: ImageMagick
 previousurl: setup-jekyll-theme-blog
 nexturl: null
 
-modified: 2018-01-12T18:17:25.000Z
+modified: 2019-08-18T18:17:25.000Z
 categories: "blog"
 excerpt: Install ImageMagick and edit your images.
 tags:
@@ -51,16 +51,16 @@ Start a <span class='app'>Terminal</span> session, and update Homebrew before in
 
 Then install ImageMagick from the <span class='app'>Terminal</span> command-line:
 
-<span class='terminal'>$ brew install imagemagick --with-librsvg</span>
+<span class='terminal'>$ brew install imagemagick</span>
 
-The addition <span class='terminal'>--with-librsvg</span> extends ImageMagick with vector processing capacity, that I use for creating map layouts as explained in [another post](../inkscape/).
+With older versions of Brew you had to add vector processing for ImageMagick with the command: <span class='terminal'>$ brew install imagemagick --with-librsvg</span>. But this was changed and is no longer required (r even possible).
 
-If you want to remove a Homebrew installed app, use the command:
+If you need to remove a Homebrew installed app, use the command _remove_:
 
 <span class='terminal'>$ brew remove imagemagick</span>
 
-If you already have ImageMagick installed via Homebrew and want to extend ImageMagick with the vector processing capacity, first remove and then install again, with the installation command including <span class='terminal'>--with-librsvg</span>.
-
+Then reinstall the newer version, or install with added commands if requested.
+ 
 ## Basic ImageMagick commands
 
 Start a <span class='app'>Terminal</span> session, and go to the directory where you have the images you want to work with.
