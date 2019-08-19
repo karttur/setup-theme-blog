@@ -32,6 +32,33 @@ I am using [FFmpeg](https://www.FFmpeg.org/), a <span class='app'>Terminal</span
 
 <span class='terminal'>$ brew install ffmpeg</span>
 
+The installations reports the following caveats when finishing:
+```
+==> Caveats
+==> unbound
+To have launchd start unbound now and restart at startup:
+  sudo brew services start unbound
+==> icu4c
+icu4c is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides libicucore.dylib (but nothing else).
+
+If you need to have icu4c first in your PATH run:
+  echo 'export PATH="/usr/local/opt/icu4c/bin:$PATH"' >> ~/.bash_profile
+  echo 'export PATH="/usr/local/opt/icu4c/sbin:$PATH"' >> ~/.bash_profile
+
+For compilers to find icu4c you may need to set:
+  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+For pkg-config to find icu4c you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
+
+==> tesseract
+This formula contains only the "eng", "osd", and "snum" language data files.
+If you need all the other supported languages, `brew install tesseract-lang`.
+```
+Unless you have very special requests you can safely ignore the reported caveats.
+
 FFmpeg can do vastly more than covered in this post, and there are many manuals and tutorials on how to install, configure and use FFmpeg out there. Here I will only use FFmpeg for creating an animation from a sequence of still images.
 
 ## Image sequence
