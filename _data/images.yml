@@ -843,6 +843,13 @@ tropwetlandmap:
     credit: null
     source: null
 
+github-account_karttur_01_menu-new-repo:
+    file: github-account_karttur_01_menu-new-repo.jpg
+    author: Thomas Gumbricht
+    caption: Create new repository in github.com
+    credit: null
+    source: null
+
 photo-fix_haze_im_orig:
   file: photo-fix_haze_im_orig.jpg
 photo-fix_haze_im_autolevel:

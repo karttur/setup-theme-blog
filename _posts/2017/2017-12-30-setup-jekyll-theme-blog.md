@@ -4,7 +4,7 @@ title: Setup Jekyll theme blog
 previousurl: null
 nexturl: install-imagemagick
 excerpt: "Set up a blog repository with a Jekyll theme, edit using Atom, and publish at GitHub.com"
-modified: "2017-12-30 14:33"
+modified: "2019-09-09 14:33"
 categories: "blog"
 tags:
   - Blog setup
@@ -29,7 +29,7 @@ share: true
 
 ## Introduction
 
-Looking for a Jekyll template theme to use for writing my blogs, I started by looking at the Jekyll officially [supported themes](https://pages.github.com/themes/), but as I wanted a theme that could handle Tex/LaTex/MathML codes for math, I ended up searching [here](https://jekyllthemes.io) and [here](http://jekyllthemes.org). In the end I decided to use the [So Simple theme](https://github.com/mmistakes/so-simple-theme) by Michael Rose.
+Looking for a Jekyll template theme to use for writing my blogs, I started by looking at the Jekyll officially [supported themes](https://pages.github.com/themes/), but as I wanted a theme that could handle Tex/LaTex/MathML codes for math, I ended up searching [here](https://jekyllthemes.io) and [here](http://jekyllthemes.org). In the end I decided to use the [So Simple theme](https://github.com/mmistakes/so-simple-theme) by Michael Rose. When writing this in December 2019 the So Simple theme was at version 2. When attempting to [update  Jekyll](../update-gems) and So Simple, I discovered that version 3 of the So Simple theme was differently constructed. **The installation and customisation of the So Simple theme as described in this blog is thus outdated.**
 
 In this blog I describe how I set up Jekyll with the So Simple theme. If you need to set up Jekyll and a text editor for working with your blogs, check [this blog](https://karttur.github.io/setup-blog/). If you want to understand a bit more about the code structure of Jekyll and markdown files, and publish a blog on GitHub, you could read [this blog](https://karttur.github.io/setup-github/).
 
@@ -51,7 +51,7 @@ Now you should have a repository set up with a Jekyll theme of your choice. Open
 
 <span class='terminal'>$ cd /local/path/to/repository</span>
 
-List (ls) the content of your repository using the Terminal:
+List (<span class='terminal'>ls</span>) the content of your repository using the Terminal:
 
 <span class='terminal'>$ ls</span>
 
