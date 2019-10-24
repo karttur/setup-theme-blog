@@ -197,7 +197,7 @@ The only adjustment I normally do is changing the _-dissolve_ mixing factor, whi
   <img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure3B].file }}" alt="image">
   <img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure3C].file }}" alt="image">
   <img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure3D].file }}" alt="image">
-  <figcaption>Aerial photo over Lake Kyoga; upper left: my solution, upper right: with coloboost, lower left: with autocolor, lower-right: with autolevel.</figcaption>
+  <figcaption>Aerial photo over Lake Kyoga; upper left: my solution, upper right: with colorboost, lower left: with autocolor, lower-right: with autolevel.</figcaption>
 </figure>
 
 If the shadows are strong, I add the shadowhighlight script from Fred's ImageMagick scripts as the first step. This compresses the range of all channels and hence works a bit like the _-contrast-stretch_ above, but restricted to the darkest and brightest pixels. The _-auto-gamma_ function in the second step restores the range of the channels, but shadows will have brightened up slightly.
