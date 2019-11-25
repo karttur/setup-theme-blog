@@ -1,15 +1,14 @@
 ---
 layout: post
-title: Github.io front page
+title: Customisation summary
 modified: 2019-10-09 10:33
 previousurl: null
 nexturl: null
 categories: "blog"
-excerpt: Create the page for github.io/user
+excerpt: A summary of my costutmisations in code
 tags:
   - Jekyll
-  - gems
-  - update
+  - customization
   - So Simple Theme
 image: avg-rntwi_RNTWI_java_2001-2016_AS
 figure1: github-account_karttur_01_menu-new-repo
@@ -21,15 +20,11 @@ share: true
 
 ## introduction
 
-All the gh-pages that you publish on github (http://user.github.io) end up in sub-folders named after the repository (e.g. http://user.github.io/"repositiry"). This post explains how to create a front page at (http://user.github.io).
-
-## Prerequisits
-
-If you just want to build a web page from scratch, all you need is a [github.com]() account. If you want to manage your domain web page from your local machine you also need <span class='app'>GitHub Desktop</span>.
+I wrote this summary as a preparation for changing to the rewokree version of the Jekyll theme [So Simple](https://github.com/mmistakes/so-simple-theme) by Michael Rose. The new version, however, is so different that I did not go through with changing all my customizations.
 
 ## Customisation
 
-### eidted and extended scss
+### edited and extended scss
 
 #### \_animations.scss
 
