@@ -45,7 +45,7 @@ To create the front page for your gitub.io domain account, give your new reposit
 
 <span class='menu'>karttur.github.io</span>
 
-Add a <span class='textbox'>Description</span> and also check <span class='checkbox'>Initialize this repository with a README</span>. Then click <span class='button'>Create Repository</span>
+Add a <span class='textbox'>Description</span> and also check <span class='checkbox'>Initialise this repository with a README</span>. Then click <span class='button'>Create Repository</span>
 
 ## Keep the code in the Master branch
 

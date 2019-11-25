@@ -7,13 +7,13 @@
   url: /
 
 - title: Karttur on GitHub
-  url: http://karttur.github.io/overview/
+  url: http://karttur.github.io/
 
-- title: Articles
-  url: /setup-blog/
+- title: Setup Jekyll and Atom
+  url: https://karttur.github.io/setup-blog/
 
-- title: Blog
-  url: /blog/
+- title: Setup GitHub
+  url: https://karttur.github.io/setup-github/
 
 - title: Search
   url: /search/
