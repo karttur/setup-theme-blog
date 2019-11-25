@@ -20,7 +20,7 @@ share: true
 
 ## introduction
 
-I wrote this summary as a preparation for changing to the rewokree version of the Jekyll theme [So Simple](https://github.com/mmistakes/so-simple-theme) by Michael Rose. The new version, however, is so different that I did not go through with changing all my customizations.
+I wrote this summary as a preparation for changing to the reworked version of the Jekyll theme [So Simple](https://github.com/mmistakes/so-simple-theme) by Michael Rose. The new version, however, is so different that I did not go through with changing all my customizations.
 
 ## Customisation
 
