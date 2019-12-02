@@ -9,6 +9,8 @@ categories: "blog"
 excerpt: Install ImageMagick and edit your images.
 tags:
   - ImageMagick
+  - Homebrew
+  - Brew
   - macOS
 image: avg-rntwi_RNTWI_java_2001-2016_AS
 figure1: avg-rntwi_RNTWI_id_2001-2016_large
