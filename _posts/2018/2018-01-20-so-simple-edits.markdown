@@ -39,7 +39,7 @@ Many Jekyll template themes include a menu system, that when cloned or downloade
 - title: About
   url: /about/
 
-- title: Front
+- title: Fount
   url: /
 
 - title: Karttur on GitHub

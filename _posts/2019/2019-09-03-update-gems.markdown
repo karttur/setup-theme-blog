@@ -111,7 +111,7 @@ Following the steps above in September 2019 I ended up with Jekyll version 3.8.6
 Before doing the upgrade described most of my repositories were at jekyll version 3.6.2, and I got some security warnings. To upgrade a reposiroy, simply open the <span class='file'>Gemfile</span> and alter the line:
 
 ```
-gem "jekyll", "3.6.2"
+gem "jekyll", "3.8.6"
 ```
 to
 ```
