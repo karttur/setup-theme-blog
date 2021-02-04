@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Update Jekyll gems
-modified: 2019-09-03 11:33
+modified: 2020-09-14 11:33
 previousurl: null
 nexturl: null
 categories: "blog"
@@ -23,15 +23,17 @@ At some point in time you will need to upgrade at least your version of Jekyll, 
 
 My intention was to also update the Jekyll Theme that I chose almost 2 years ago, [So Simple](https://github.com/mmistakes/so-simple-theme). The changes between versions 2 and 3 of the So Simple theme, however, break all the customisations I have created to be able to host my diverse pages. I thus decided against updating the theme at this point.
 
-## Check and upgrade RVM version and PATH
+## Check and RVM version and PATH
 
 If on Mac OSX, start by checking and upgrading the [Ruby Version Manager](https://rvm.io). To check your present RVM version, open a <span class='app'>Terminal</span> and type at the prompt:
 
 <span class='terminal'>$ rvm version</span>
 
-If the response is OK, you can self-upgrade RVM as outlined on the [rvm official upgrade page](https://rvm.io/rvm/upgrading):
+### PATH error
 
-<span class='terminal'>$ rvm get stable</span>
+If command reponse reports a PATH error, the problem might be in your <span class='file'>.bash_profile</span> file in your home directory.
+
+#### Easy mending
 
 If <span class='terminal'>$ rvm version</span> returns an error, like for instance <span class='terminal'>PATH is not properly set up</span>, read the feedback at the prompt and follow the steps. The message <span class='terminal'>PATH is not properly set up</span>, can be solved by making sure that the  <span class='terminal'>PATH</span> to the RVM binary is the very last path given in the .dot-file: <span class='file'>.bash_profile</span> or <span class='file'>.profile</span>. If both these .dot-files exists (both are in your home directory <span class='terminal'>~</span>), you need to make sure that the path to RVM (<span class='terminal'>export PATH="$PATH:$HOME/.rvm/bin"</span>) is the very last of the two. You can edit both <span class='file'>.bash_profile</span> and <span class='file'>.profile</span> using the command-line editor <span class='terminalapp'>pico</span>.
 
@@ -42,6 +44,35 @@ Retry checking the RVM version, and if the version is correct, go ahead and upda
 <span class='terminal'>$ rvm get stable --auto-dotfiles</span>
 
 To invoke the installation close and open the <span class='app'>Terminal</span> or run the command <span class='terminal'>$ rvm reload</span>
+
+#### Still not working mending
+
+If the easy mending did not work out properly, here is how to edit directly in  <span class='file'>.bash_profile</span>.
+The default installed PATH command related to RVM in my system was a single line:
+
+```
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load R$
+```
+
+After searching a bit after how to handle the error, I changed the first line slightly and added two more PATH lines related to RVM. These three lines have to be the last entries in <span class='file'>.bash_profile</span>.
+
+```
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to path for scripting (to manage R$
+export PATH="$GEM_HOME/bin:$PATH"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # Load RV$
+```
+
+After adding this line you have to stop the <span class='app'>Terminal</span> and then restart it to force the changes to take effect.
+
+## Upgrade RVM
+
+If the response from
+
+<span class='terminal'>$ rvm version</span>
+
+is OK, you can self-upgrade RVM as outlined on the [rvm official upgrade page](https://rvm.io/rvm/upgrading):
+
+<span class='terminal'>$ rvm get stable</span>
 
 ### Upgrade Ruby under RVM
 
